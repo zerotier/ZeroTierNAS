@@ -1,0 +1,4 @@
+# Copyright (C) 2011-2015 ZeroTier, Inc.
+
+[default]
+all="6.0"
