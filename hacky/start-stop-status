@@ -27,7 +27,7 @@ case "$1" in
     fi
     ;;
   *)
-    echo "Usage: /etc/init.d/zerotier-one {start|stop|status}"
+    echo "Usage: start-stop-status {start|stop|status}"
     exit 1
     ;;
 esac

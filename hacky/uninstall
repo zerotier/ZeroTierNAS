@@ -16,5 +16,5 @@ rm -f /var/lib/zerotier-one/zerotier-one.port
 # control and startup scripts
 
 rm -rf start-stop-status.sh /var/lib/zerotier-one/start-stop-status
+rm -rf /var/lib/zerotier-one/reset
 rm -rf zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
-rm -f /var/lib/zerotier-one/reset

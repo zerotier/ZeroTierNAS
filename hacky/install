@@ -1,7 +1,6 @@
 #! /bin/sh
 
-# traditional install
-
+echo Copying ZeroTier files...
 mkdir -p /usr/sbin
 rm -f /usr/sbin/zerotier-one
 cp -f zerotier-one /usr/sbin/zerotier-one
@@ -19,7 +18,10 @@ ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-one
 ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-cli
 ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-idtool
 
-# control and startup scripts
+echo Installing control scripts...
+cp -f uninstall /var/lib/zerotier-one/uninstall
 cp -f start-stop-status /var/lib/zerotier-one/start-stop-status
+ln -s reset /var/lib/zerotier-one/reset
+
+# startup script
 cp -f zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
-ln -s reset /usr/sbin/reset
