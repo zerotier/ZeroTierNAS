@@ -22,3 +22,4 @@ ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-idtool
 # control and startup scripts
 cp -f start-stop-status /var/lib/zerotier-one/start-stop-status
 cp -f zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
+ln -s reset /usr/sbin/reset
