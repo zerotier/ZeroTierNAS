@@ -3,17 +3,17 @@ Synology DiskStation NAS + ZeroTier
 
 The hacky way: 
 
-- 
-- ZeroTier requires a TUN/TAP device, load kernel module:
+### Installation
+
+Build ZeroTierOne in the usual way, place the binary in the `hacky` directory.
 
 ```
-find /lib/modules/ -iname 'tun.ko'
+./install
 ```
 
-```
-insmod /lib/modules/tun.ko
-```
+This will copy the traditional ZeroTier files to their normal locations. A script will be added to handle the loading of the TUN/TAP kernel module on boot. This will be located at `/usr/local/etc/rc.d/zerotierone.sh`.
 
+After startup it may be necessary to leave and re-join your networks for it to be reachable.
 
 ***
 
