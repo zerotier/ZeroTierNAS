@@ -19,6 +19,6 @@ ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-one
 ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-cli
 ln -s ../../../usr/sbin/zerotier-one /var/lib/zerotier-one/zerotier-idtool
 
-# integration with DSM 6.0
-
-# copy into local directory (volume1/@tmp)
+# control and startup scripts
+cp -f start-stop-status /var/lib/zerotier-one/start-stop-status
+cp -f zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
