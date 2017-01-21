@@ -7,7 +7,7 @@
 	<target name="spk" description="Build SPK package">
 		<syno:spk destdir="dist" name="${package}" version="${version}" arch="noarch">
 			<info name="displayname" value="ZeroTier" />
-			<info name="description" value="An ethernet switch for Earth. Create flat virtual Ethernet networks of almost unlimited size." />
+			<info name="description" value="An Ethernet switch for Earth. Create flat virtual Ethernet networks of almost unlimited size." />
 
 			<info name="maintainer" value="joseph.henry@zerotier.com" />
 			<info name="maintainer_url" value="https://zerotier.com" />

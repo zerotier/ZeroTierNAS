@@ -1,2 +1,27 @@
 #!/bin/sh
+
+ZT_BIN_DIR="/usr/sbin"
+ZT_HOME_DIR="/var/lib/zerotier-one"
+
+# traditional uninstall
+rm -f ${ZT_HOME_DIR}/zerotier-one
+rm -f ${ZT_HOME_DIR}/zerotier-cli
+rm -f ${ZT_HOME_DIR}/zerotier-idtool
+rm -f ${ZT_BIN_DIR}/zerotier-cli
+rm -f ${ZT_BIN_DIR}/zerotier-idtool
+rm -f ${ZT_BIN_DIR}/zerotier-one
+rm -rf ${ZT_HOME_DIR}/iddb.d
+rm -rf ${ZT_HOME_DIR}/updates.d
+rm -rf ${ZT_HOME_DIR}/networks.d
+rm -f ${ZT_HOME_DIR}/zerotier-one.port
+
+# proxy service (provides service for UI in DSM)
+rm -rf ${ZT_HOME_DIR}/ztui_proxy.js
+rm -rf ${ZT_HOME_DIR}/node_modules
+
+# control and startup scripts
+# rm -rf start-stop-status.sh /var/lib/zerotier-one/start-stop-status
+# rm -rf /var/lib/zerotier-one/reset
+# rm -rf zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
+
 exit 0

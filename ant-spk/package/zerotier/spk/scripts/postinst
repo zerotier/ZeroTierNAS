@@ -1,2 +1,42 @@
 #!/bin/sh
+
+ZT_BIN_DIR="/usr/sbin"
+ZT_HOME_DIR="/var/lib/zerotier-one"
+
+echo "ZeroTier home dir = /var/lib/zerotier-one\n" + ${SYNOPKG_PKGDEST} > $SYNOPKG_TEMP_LOGFILE
+
+echo Copying ZeroTier files...
+mkdir -p ${ZT_BIN_DIR}
+
+# copy zerotier-one
+rm -f ${ZT_BIN_DIR}/zerotier-one
+cp -f ${SYNOPKG_PKGDEST}/bin/zerotier-one ${ZT_BIN_DIR}/zerotier-one
+chmod 755 ${ZT_BIN_DIR}/zerotier-one
+
+rm -f ${ZT_BIN_DIR}/zerotier-cli
+rm -f ${ZT_BIN_DIR}/zerotier-idtool
+ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one ${ZT_BIN_DIR}/zerotier-cli
+ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one ${ZT_BIN_DIR}/zerotier-idtool
+chmod 755 ${ZT_BIN_DIR}/zerotier-cli
+chmod 755 ${ZT_BIN_DIR}/zerotier-idtool
+
+mkdir -p ${ZT_HOME_DIR}
+rm -f ${ZT_HOME_DIR}/zerotier-one
+rm -f ${ZT_HOME_DIR}/zerotier-cli
+rm -f ${ZT_HOME_DIR}/zerotier-idtool
+ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-one
+ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-cli
+ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-idtool
+
+# proxy service (provides service for UI in DSM)
+cp -f ${SYNOPKG_PKGDEST}/bin/ztui_proxy.js ${ZT_HOME_DIR}/ztui_proxy.js
+mv -f ${SYNOPKG_PKGDEST}/dsm/node_modules ${ZT_HOME_DIR}/node_modules
+
+# echo Installing control scripts...
+# cp -f uninstall ${ZT_HOME_DIR}/uninstall
+# cp -f start-stop-status ${ZT_HOME_DIR}/start-stop-status
+# ln -s reset ${ZT_HOME_DIR}/reset
+# startup script
+# cp -f zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
+
 exit 0
