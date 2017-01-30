@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<antlib>
+	<taskdef name="spk" classname="net.filebot.ant.spk.PackageTask" />
+	<taskdef name="package-source" classname="net.filebot.ant.spk.RepositoryTask" />
+	<taskdef name="codesign" classname="net.filebot.ant.spk.CodeSignTask" />
+</antlib>
