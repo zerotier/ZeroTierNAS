@@ -1,5 +1,9 @@
 var ZeroTierNode = React.createClass({
 	getInitialState: function() {
+		window.local_address = prompt("Please enter device's local ip:", "");
+		this.props.auth_addr = 'http://' + window.local_address + ':5000/'
+		this.props.proxy_addr = 'http://' + window.local_address + ':3090/'
+		this.syno_init()
 		return {
 			address: '----------',
 			online: false,
@@ -18,7 +22,7 @@ var ZeroTierNode = React.createClass({
 
 	updatePeers: function() {
 		Ajax.call({
-			url: this.props.addr+'peer',
+			url: this.props.proxy_addr+'peer' + '?' + this.CSRF_TOKEN_KEY + '=' + this.CSRF_TOKEN_VAL + '&' + this.COOKIE_KEY + '=' + this.COOKIE_VAL,
 			cache: false,
 			type: 'GET',
 			success: function(data) {
@@ -35,7 +39,7 @@ var ZeroTierNode = React.createClass({
 	},
 	updateNetworks: function() {
 		Ajax.call({
-			url: this.props.addr+'network',
+			url: this.props.proxy_addr+'network' + '?' + this.CSRF_TOKEN_KEY + '=' + this.CSRF_TOKEN_VAL + '&' + this.COOKIE_KEY + '=' + this.COOKIE_VAL,
 			cache: false,
 			type: 'GET',
 			success: function(data) {
@@ -50,32 +54,131 @@ var ZeroTierNode = React.createClass({
 			}.bind(this)
 		});
 	},
-	updateAll: function() {
+
+
+    requestAuth: function() {
+        this.dispatchRequest('auth', {})
+    },
+    requestVersion: function () {
+        this.dispatchRequest('version', {})
+    },
+
+
+    dispatchRequest: function(path, parameters) {
+        Ajax.call({
+        	url: this.props.proxy_addr + path + '?' + this.CSRF_TOKEN_KEY + '=' + this.CSRF_TOKEN_VAL + '&' + this.COOKIE_KEY + '=' + this.COOKIE_VAL,
+            type: 'GET',
+            cache: false,
+            success: function (response) {
+                var data = JSON.parse(response.responseText)
+            	alert('data=' + data)
+            }.bind(this),
+            error: function (response) {
+                //alert('request error')
+                this.setState('UNAUTH');
+            }.bind(this),
+        })
+    },
+
+
+    getCookieVal : function(offset){
+        var endstr = document.cookie.indexOf(";", offset);
+        if(endstr == -1){
+            endstr = document.cookie.length;
+        }
+        return unescape(document.cookie.substring(offset, endstr));
+    },
+
+
+    getCookie : function(name){
+        var arg = name + "=",
+            alen = arg.length,
+            clen = document.cookie.length,
+            i = 0,
+            j = 0;
+            
+        while(i < clen){
+            j = i + alen;
+            if(document.cookie.substring(i, j) == arg){
+                return this.getCookieVal(j);
+            }
+            i = document.cookie.indexOf(" ", i) + 1;
+            if(i === 0){
+                break;
+            }
+        }
+        return null;
+    },
+
+	syno_init: function()
+	{
+		if (this.CSRF_TOKEN_KEY == 'SynoToken') {
+            return
+        }
+
+        // Synology DSM require SynoToken (CSRF) and Cookie (USER) to authenticate a user request
+        this.CSRF_TOKEN_KEY ='SynoToken'
+        this.CSRF_TOKEN_VAL = null
+        this.COOKIE_KEY = 'Cookie'
+        this.COOKIE_VAL ='id='+this.getCookie('id')
+
+        window.CSRF_TOKEN_KEY ='SynoToken'
+        window.CSRF_TOKEN_VAL = null
+        window.COOKIE_KEY = 'Cookie'
+        window.COOKIE_VAL ='id='+this.getCookie('id')
+
 		Ajax.call({
-			url: this.props.addr+'status',
+			url: this.props.auth_addr+'webman/login.cgi',
 			cache: false,
 			type: 'GET',
 			success: function(data) {
 				this.alertedToFailure = false;
 				if (data) {
-					var status = JSON.parse(data);
-					this.setState(status);
-					document.title = 'ZeroTier One [' + status.address + ']';
+					var parsed_data = JSON.parse(data)
+					this.CSRF_TOKEN_VAL = parsed_data[this.CSRF_TOKEN_KEY]					
+					window.CSRF_TOKEN_VAL = parsed_data[this.CSRF_TOKEN_KEY]
+
+					this.authenticated = true
 				}
-				this.updateNetworks();
-				this.updatePeers();
+                this.requestAuth()
+
 			}.bind(this),
 			error: function(xhr){
-        		// alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
-        		alert('Error: Check that the ztui proxy is running, CORS is enabled, and port 3090 is not blocked by a firewall');
+        		//alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+        		this.setState('UNAUTH');
     		}.bind(this)
 		});
+	},
+
+	updateAll: function() {
+		if(this.authenticated) {
+			Ajax.call({
+				url: this.props.proxy_addr+'status' + '?' + this.CSRF_TOKEN_KEY + '=' + this.CSRF_TOKEN_VAL + '&' + this.COOKIE_KEY + '=' + this.COOKIE_VAL,
+				cache: false,
+				type: 'GET',
+				success: function(data) {
+					this.alertedToFailure = false;
+					if (data) {
+						var status = JSON.parse(data);
+						this.setState(status);
+						document.title = 'ZeroTier One [' + status.address + ']';
+					}
+					this.updateNetworks();
+					this.updatePeers();
+				}.bind(this),
+				error: function(xhr){
+	        		// alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+	        		this.setState('UNAUTH');
+	        		// alert('Error: Request to ZeroTier UI proxy failed. Server at /var/lib/zerotier-one/ztui_server.js is down.');
+	    		}.bind(this)
+			});
+		}
 	},
 	joinNetwork: function(event) {
 		event.preventDefault();
 		if ((this.networkToJoin)&&(this.networkToJoin.length === 16)) {
 			Ajax.call({
-				url: this.props.addr+'network/'+this.networkToJoin,
+				url: this.props.proxy_addr+'network/'+this.networkToJoin + '?' + this.CSRF_TOKEN_KEY + '=' + this.CSRF_TOKEN_VAL + '&' + this.COOKIE_KEY + '=' + this.COOKIE_VAL,
 				cache: false,
 				type: 'POST',
 				success: function(data) {

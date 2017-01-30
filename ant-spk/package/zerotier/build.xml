@@ -11,7 +11,11 @@
 
 			<info name="maintainer" value="joseph.henry@zerotier.com" />
 			<info name="maintainer_url" value="https://zerotier.com" />
-
+			
+			<info name="install_dep_packages" value="Node.js_v4" />
+			<info name="install_dep_services" value="Node.js_v4" />
+			<info name="start_dep_services" value="Node.js_v4" />
+			
 			<info name="dsmappname" value="org.example.ZeroTier" />
 			<info name="dsmuidir" value="dsm" />
 

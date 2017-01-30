@@ -7,8 +7,12 @@ case "$1" in
     else
         echo "Starting ZeroTier-One" ;
         /usr/sbin/zerotier-one -d ;
-        echo "Starting ZeroTier-One UI proxy"
-        node /var/lib/zerotier-one/ztui_proxy.js
+        # /var/lib/zerotier-one/start.sh || true &;
+        #echo "Starting ZeroTier-One UI proxy" ;
+        # --max_executable_size (max size of executable memory (in Mbytes))
+        # --optimize_for_size (Enables optimizations which favor memory size over execution speed.)
+        # --use_idle_notification (Use idle notification to reduce memory footprint.)
+        # node --max_executable_size=16 --optimize_for_size --use_idle_notification /var/lib/zerotier-one/ztui_server.js ;
         echo "$(date) Started ZeroTier-One" >> /opt/var/log/zerotier-one.log ;
     fi
     ;;
@@ -16,7 +20,7 @@ case "$1" in
     if ( pidof zerotier-one )
     then
         echo "Stopping ZeroTier-One";
-        killall zerotier-one
+        killall zerotier-one ;
         echo "$(date) Stopped ZeroTier-One" >> /opt/var/log/zerotier-one.log
     else
         echo "ZeroTier-One was not running" ;

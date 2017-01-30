@@ -40,7 +40,9 @@ function getUrlParameter(parameter)
 	return '';
 }
 
+window.gdata = "who?";
+
 React.render(
-	React.createElement(ZeroTierNode, {addr: 'http://192.168.0.5:3090/'}),
+	React.createElement(ZeroTierNode, {auth_addr: 'http://192.168.0.5:5000/', proxy_addr: 'http://192.168.0.5:3090/'}),
 	document.getElementById('main')
 );

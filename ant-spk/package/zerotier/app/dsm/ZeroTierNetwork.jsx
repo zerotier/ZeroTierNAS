@@ -5,7 +5,7 @@ var ZeroTierNetwork = React.createClass({
 
 	leaveNetwork: function(event) {
 		Ajax.call({
-			url: 'network/'+this.props.nwid+'?auth='+this.props.authToken,
+			url: 'http://' + window.local_address + ':3090/'+'network/'+this.props.nwid+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
 			cache: false,
 			type: 'DELETE',
 			success: function(data) {

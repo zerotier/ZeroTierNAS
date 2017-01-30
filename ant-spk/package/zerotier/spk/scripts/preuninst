@@ -3,7 +3,6 @@
 ZT_BIN_DIR="/usr/sbin"
 ZT_HOME_DIR="/var/lib/zerotier-one"
 
-# traditional uninstall
 rm -f ${ZT_HOME_DIR}/zerotier-one
 rm -f ${ZT_HOME_DIR}/zerotier-cli
 rm -f ${ZT_HOME_DIR}/zerotier-idtool
@@ -16,12 +15,12 @@ rm -rf ${ZT_HOME_DIR}/networks.d
 rm -f ${ZT_HOME_DIR}/zerotier-one.port
 
 # proxy service (provides service for UI in DSM)
-rm -rf ${ZT_HOME_DIR}/ztui_proxy.js
-rm -rf ${ZT_HOME_DIR}/node_modules
+rm -rf ${ZT_HOME_DIR}/ztui_server.js
+rm -rf ${ZT_HOME_DIR}/reset.sh
+rm -rf ${ZT_HOME_DIR}/start.sh
+rm -rf ${ZT_HOME_DIR}/package.json
 
-# control and startup scripts
-# rm -rf start-stop-status.sh /var/lib/zerotier-one/start-stop-status
-# rm -rf /var/lib/zerotier-one/reset
-# rm -rf zerotierone.sh /usr/local/etc/rc.d/zerotierone.sh
+cd /var/lib/zerotier-one
+for package in `ls node_modules`; do npm uninstall $package; done;
 
 exit 0
