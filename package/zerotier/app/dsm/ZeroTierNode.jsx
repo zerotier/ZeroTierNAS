@@ -1,13 +1,16 @@
 var ZeroTierNode = React.createClass({
 	getInitialState: function() {
 
-		window.auth_port = 5000
+
+		//console.log(this.getServerEndpoint(""))
+		//console.log(document.location.host)
+		//window.auth_port = 5000
 		window.ui_proxy_port = 3090
 
 		// get local address (of NAS) for ZT UI server and auth functions
-		window.local_address = prompt("Please enter device's local ip:", "");
-		window.auth_addr = "http://" + window.local_address + ":" + auth_port + "/"
-		window.proxy_addr = "http://" + window.local_address + ":" + ui_proxy_port + "/"
+		//window.local_address = prompt("Please enter device's local ip:", "");
+		window.auth_addr = "http://" + document.location.host + "/"
+		window.proxy_addr = "http://" + document.location.hostname + ":" + ui_proxy_port + "/"
 
 		this.syno_init()
 		return {
@@ -18,6 +21,18 @@ var ZeroTierNode = React.createClass({
 			_peers: []
 		};
 	},
+
+/*
+	getServerEndpoint: function(path) {
+        //if (document.location.pathname == '/webman/3rdparty/zerotier/index.html') {
+        //    // Synology DSM configuration
+        //    return 'proxy/' + path
+        //} else {
+            // generic configuration
+            return document.location.protocol + '//' + document.location.hostname + ':' + (document.location.protocol.indexOf('https') < 0 ? Ext.manifest.server.port.http : Ext.manifest.server.port.https) + '/' + path
+        //}
+    },
+*/
 
 	ago: function(ms) {
 		if (ms > 0) {
@@ -126,11 +141,6 @@ var ZeroTierNode = React.createClass({
         }
 
         // Synology DSM require SynoToken (CSRF) and Cookie (USER) to authenticate a user request
-        this.CSRF_TOKEN_KEY ='SynoToken'
-        this.CSRF_TOKEN_VAL = null
-        this.COOKIE_KEY = 'Cookie'
-        this.COOKIE_VAL ='id='+this.getCookie('id')
-
         window.CSRF_TOKEN_KEY ='SynoToken'
         window.CSRF_TOKEN_VAL = null
         window.COOKIE_KEY = 'Cookie'
@@ -144,9 +154,7 @@ var ZeroTierNode = React.createClass({
 				this.alertedToFailure = false;
 				if (data) {
 					var parsed_data = JSON.parse(data)
-					this.CSRF_TOKEN_VAL = parsed_data[this.CSRF_TOKEN_KEY]					
-					window.CSRF_TOKEN_VAL = parsed_data[this.CSRF_TOKEN_KEY]
-
+					window.CSRF_TOKEN_VAL = parsed_data[window.CSRF_TOKEN_KEY]
 					this.authenticated = true
 				}
                 this.requestAuth()
@@ -160,7 +168,6 @@ var ZeroTierNode = React.createClass({
 	},
 
 	updateAll: function() {
-		console.log(window.proxy_addr)
 		if(this.authenticated) {
 			Ajax.call({
 				url: window.proxy_addr+'status' + '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
@@ -205,6 +212,20 @@ var ZeroTierNode = React.createClass({
 			alert('To join a network, enter its 16-digit network ID.');
 		}
 	},
+	resetService: function(event) {
+		event.preventDefault();
+		Ajax.call({
+			url: window.proxy_addr+'reset' 
+				+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
+			cache: false,
+			type: 'POST',
+			success: function(data) {
+				// ...
+			}.bind(this),
+			error: function() {
+			}.bind(this)
+		});
+	},
 	handleNetworkIdEntry: function(event) {
 		this.networkInputElement = event.target;
 		var nid = this.networkInputElement.value;
@@ -247,8 +268,6 @@ var ZeroTierNode = React.createClass({
 						<div className="networks" key="_networks">
 							{
 								this.state._networks.map(function(network) {
-									//network['addr'] = this.props.addr;
-									//network['authToken'] = this.props.authToken;
 									network['onNetworkDeleted'] = this.handleNetworkDelete;
 									return React.createElement('div',{className: 'network',key: network.nwid},React.createElement(ZeroTierNetwork,network));
 								}.bind(this))
@@ -261,7 +280,9 @@ var ZeroTierNode = React.createClass({
 						<span className="statusLine"><span className="zeroTierAddress">{this.state.address}</span>&nbsp;&nbsp;{this.state.online ? (this.state.tcpFallbackActive ? 'TUNNELED' : 'ONLINE') : 'OFFLINE'}&nbsp;&nbsp;{this.state.version}</span>
 					</div>
 					<div className="right">
-						<form onSubmit={this.joinNetwork}><input type="text" maxlength="16" placeholder="[ Network ID ]" onChange={this.handleNetworkIdEntry} size="16"/><button type="button" onClick={this.joinNetwork}>Join</button></form>
+						<form onSubmit={this.joinNetwork}><input type="text" maxlength="16" placeholder="[ Network ID ]" onChange={this.handleNetworkIdEntry} size="16"/>
+							<button type="button" onClick={this.joinNetwork}>Join</button>
+							<button type="button" onClick={this.resetService}>RESET</button></form>
 					</div>
 				</div>
 			</div>

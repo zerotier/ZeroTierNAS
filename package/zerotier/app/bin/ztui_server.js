@@ -30,7 +30,9 @@
 // will listen on port 3090 for /peer /status /network HTTP requests and rebuild a new HTTP request url
 // which includes the authtoken and then forward the result back to the external client
 
+//var http = require('http')
 var http = require('http')
+var https = require('https')
 var url = require('url')
 var querystring = require('querystring')
 var child_process = require('child_process')
@@ -62,12 +64,20 @@ fs.readFile('authtoken.secret', 'utf8', function(err, data) {
 
 
 function handleRequest(request, response) {
+    console.log(request.url)
+    console.log(request.method)
+
     var requestParameters = url.parse(request.url)
     var requestPath = requestParameters.pathname
     var options = querystring.parse(requestParameters.query)
 
     // require user authentication for all handlers below
     var user = auth(request, response, options)
+
+    if(request.method == 'OPTIONS') {
+        ok(response, {})
+        return null
+    }
 
     if ('/auth' == requestPath) {
         console.log('/auth')
@@ -80,23 +90,24 @@ function handleRequest(request, response) {
     if (!user) {
         return unauthorized(response)
     }
+    if('/reset' == requestPath) { // reest service (hack for TUN reliability issue)
+        var pd = child_process.spawn('/var/lib/zerotier-one/reset.sh', [], { env: {} })        
+        return null
+    }
     if('/peer' == requestPath) {
-        httpReqAsync(response, "GET", ui_proxy_addr+":"+zt_service_port+"/peer?auth="+authtoken, null);
+        httpReqAsync(response, request.method, ui_proxy_addr+":"+zt_service_port+"/peer?auth="+authtoken, null);
         return null
     }
     if('/network' == requestPath) {
-        httpReqAsync(response, "GET", ui_proxy_addr+":"+zt_service_port+"/network?auth="+authtoken, null);
+        httpReqAsync(response, request.method, ui_proxy_addr+":"+zt_service_port+"/network?auth="+authtoken, null);
         return null
     }
     if(requestPath.includes('/network/')) {
-                console.log(request.type)
-        console.log(request.url)
-        console.log(options)
-        httpReqAsync(response, "POST", ui_proxy_addr+":"+zt_service_port+requestPath+"?auth="+authtoken, null);
+        httpReqAsync(response, request.method, ui_proxy_addr+":"+zt_service_port+requestPath+"?auth="+authtoken, null);
         return null
     }
     if('/status' == requestPath) {
-        httpReqAsync(response, "GET", ui_proxy_addr+":"+zt_service_port+"/status?auth="+authtoken, null);
+        httpReqAsync(response, request.method, ui_proxy_addr+":"+zt_service_port+"/status?auth="+authtoken, null);
         return null
     }
     return error(response, 'ILLEGAL REQUEST')
@@ -161,14 +172,18 @@ function server(request, response) {
     }
 }
 
-http.createServer(server, function(req, res)
+http.createServer(server).listen(ui_proxy_service_port, '0.0.0.0')
+//https.createServer(options, server).listen(ui_proxy_service_port, '0.0.0.0')
+
+/*
+https.createServer(server, function(req, res)
 {
+    res.header('content-type', 'application/javascript');
     res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE')
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 }).listen(ui_proxy_service_port, '0.0.0.0')
-
-
+*/
 
 
 // --- COMMON
