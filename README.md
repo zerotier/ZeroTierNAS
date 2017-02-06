@@ -1,6 +1,9 @@
 Synology DiskStation NAS + ZeroTier
 ======
 
+[![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
+
+
 ### Building the Standard DSM 6.0 Package
  - The official DSM package will be available in the *Package Center*, if you need to build it yourself, here are the instructions (tested on CentOS 7):
  - Install Apache Ant
