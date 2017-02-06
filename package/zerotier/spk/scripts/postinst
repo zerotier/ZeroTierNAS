@@ -39,7 +39,7 @@ npm install
 /var/lib/zerotier-one/start.sh || true &
 
 # "patch" synology script which deletes routes
-mv /usr/libexec/net/if_link_down/del_route_link_down.sh /usr/libexec/net/if_link_down/del_route_link_down.bak
+cp -f ${SYNOPKG_PKGDEST}/bin/del_route_link_down.sh /usr/libexec/net/if_link_down/del_route_link_down.sh
 
 # load TUN kernel module
 SERVICE="zerotier"

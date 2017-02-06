@@ -1,17 +1,9 @@
 var ZeroTierNode = React.createClass({
 	getInitialState: function() {
-
-
-		//console.log(this.getServerEndpoint(""))
-		//console.log(document.location.host)
-		//window.auth_port = 5000
 		window.ui_proxy_port = 3090
-
 		// get local address (of NAS) for ZT UI server and auth functions
-		//window.local_address = prompt("Please enter device's local ip:", "");
 		window.auth_addr = "http://" + document.location.host + "/"
 		window.proxy_addr = "http://" + document.location.hostname + ":" + ui_proxy_port + "/"
-
 		this.syno_init()
 		return {
 			address: '----------',
@@ -21,26 +13,12 @@ var ZeroTierNode = React.createClass({
 			_peers: []
 		};
 	},
-
-/*
-	getServerEndpoint: function(path) {
-        //if (document.location.pathname == '/webman/3rdparty/zerotier/index.html') {
-        //    // Synology DSM configuration
-        //    return 'proxy/' + path
-        //} else {
-            // generic configuration
-            return document.location.protocol + '//' + document.location.hostname + ':' + (document.location.protocol.indexOf('https') < 0 ? Ext.manifest.server.port.http : Ext.manifest.server.port.https) + '/' + path
-        //}
-    },
-*/
-
 	ago: function(ms) {
 		if (ms > 0) {
 			var tmp = Math.round((Date.now() - ms) / 1000);
 			return ((tmp > 0) ? tmp : 0);
 		} else return 0;
 	},
-
 	updatePeers: function() {
 		Ajax.call({
 			url: window.proxy_addr+'peer' 
@@ -77,16 +55,12 @@ var ZeroTierNode = React.createClass({
 			}.bind(this)
 		});
 	},
-
-
     requestAuth: function() {
         this.dispatchRequest('auth', {})
     },
     requestVersion: function () {
         this.dispatchRequest('version', {})
     },
-
-
     dispatchRequest: function(path, parameters) {
         Ajax.call({
         	url: window.proxy_addr + path 
@@ -103,8 +77,6 @@ var ZeroTierNode = React.createClass({
             }.bind(this),
         })
     },
-
-
     getCookieVal : function(offset){
         var endstr = document.cookie.indexOf(";", offset);
         if(endstr == -1){
@@ -112,8 +84,6 @@ var ZeroTierNode = React.createClass({
         }
         return unescape(document.cookie.substring(offset, endstr));
     },
-
-
     getCookie : function(name){
         var arg = name + "=",
             alen = arg.length,
@@ -133,13 +103,11 @@ var ZeroTierNode = React.createClass({
         }
         return null;
     },
-
 	syno_init: function()
 	{
 		if (this.CSRF_TOKEN_KEY == 'SynoToken') {
             return
         }
-
         // Synology DSM require SynoToken (CSRF) and Cookie (USER) to authenticate a user request
         window.CSRF_TOKEN_KEY ='SynoToken'
         window.CSRF_TOKEN_VAL = null
@@ -161,12 +129,10 @@ var ZeroTierNode = React.createClass({
 
 			}.bind(this),
 			error: function(xhr){
-        		//alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
         		this.setState('UNAUTH');
     		}.bind(this)
 		});
 	},
-
 	updateAll: function() {
 		if(this.authenticated) {
 			Ajax.call({
@@ -184,9 +150,7 @@ var ZeroTierNode = React.createClass({
 					this.updatePeers();
 				}.bind(this),
 				error: function(xhr){
-	        		// alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
 	        		this.setState('UNAUTH');
-	        		// alert('Error: Request to ZeroTier UI proxy failed. Server at /var/lib/zerotier-one/ztui_server.js is down.');
 	    		}.bind(this)
 			});
 		}
@@ -243,7 +207,6 @@ var ZeroTierNode = React.createClass({
 			this.networkInputElement.value = '';
 		}
 	},
-
 	handleNetworkDelete: function(nwid) {
 		var networks = [];
 		for(var i=0;i<this.state._networks.length;++i) {
@@ -252,7 +215,6 @@ var ZeroTierNode = React.createClass({
 		}
 		this.setState({_networks: networks});
 	},
-
 	componentDidMount: function() {
 		this.updateAll();
 		this.updateIntervalId = setInterval(this.updateAll,2500);
@@ -281,8 +243,7 @@ var ZeroTierNode = React.createClass({
 					</div>
 					<div className="right">
 						<form onSubmit={this.joinNetwork}><input type="text" maxlength="16" placeholder="[ Network ID ]" onChange={this.handleNetworkIdEntry} size="16"/>
-							<button type="button" onClick={this.joinNetwork}>Join</button>
-							<button type="button" onClick={this.resetService}>RESET</button></form>
+							<button type="button" onClick={this.joinNetwork}>Join</button></form>
 					</div>
 				</div>
 			</div>

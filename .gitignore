@@ -1,2 +1,3 @@
 *.DS_Store
 package/zerotier/gpg/*.gpg
+binaries
