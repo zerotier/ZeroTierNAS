@@ -28,7 +28,7 @@
 			<package dir="app" includes="**/*.sh" filemode="755" />
 			<package dir="app" excludes="**/*.sh" />
 
-			<codesign keyid="D545C93D" secring="gpg/secring.gpg" password="" />
+			<codesign keyid="6F6D614D" secring="gpg/secring.gpg" password="" />
 		</syno:spk>
 
 		<syno:package-source file="dist/spksrc.json">

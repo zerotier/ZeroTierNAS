@@ -11,6 +11,17 @@ export ANT_HOME=/usr/share/ant/
 ant -f $ANT_HOM/fetch.xml -Ddest=system
 ```
 
+###Generate GPG Key
+`gpg --gen-key`
+ - (1) RSA Key
+ - Choose size
+ - Enter name, email
+ - Enter a passphrase (leave blank, otherwise the build process will fail)
+
+After successful key generation, it'll be placed in `~/.gnupg/`, copy the *.gpg files into the `package/zerotier/gpg` folder and then build.
+
+To verify the key generation was successful: `gpg -K`, use the key id outputted from this in the `build.xml` file.
+
  - Build package:
  ```
  ./package/zerotier/build.sh
