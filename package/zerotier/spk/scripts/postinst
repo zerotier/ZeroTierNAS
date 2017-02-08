@@ -8,6 +8,14 @@ ZT_HOME_DIR="/var/lib/zerotier-one"
 echo Copying ZeroTier files...
 mkdir -p ${ZT_BIN_DIR}
 
+# 
+machine_type=$(uname -m)
+if [ ${machine_type} == "x86_64" ]; then
+        mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.x86_64 ${SYNOPKG_PKGDEST}/bin/zerotier-one
+else
+        mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armv7 ${SYNOPKG_PKGDEST}/bin/zerotier-one
+fi
+
 # copy zerotier-one
 rm -f ${ZT_BIN_DIR}/zerotier-one
 cp -f ${SYNOPKG_PKGDEST}/bin/zerotier-one ${ZT_BIN_DIR}/zerotier-one
