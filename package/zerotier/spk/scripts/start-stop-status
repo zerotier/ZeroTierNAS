@@ -6,6 +6,9 @@ case "$1" in
     then echo "ZeroTier-One is already running."
     else
         echo "Starting ZeroTier-One" ;
+        cd /var/lib/zerotier-one/ ; 
+        ./zt_watchdog.sh -start ;
+        ./tun_install.sh ;
         /usr/sbin/zerotier-one -d ;
         echo "$(date) Started ZeroTier-One" >> /opt/var/log/zerotier-one.log ;
     fi
@@ -15,6 +18,8 @@ case "$1" in
     then
         echo "Stopping ZeroTier-One";
         killall zerotier-one ;
+        pkill -f "zt_watchdog" ;
+        pkill -f "ztui_server" ;
         echo "$(date) Stopped ZeroTier-One" >> /opt/var/log/zerotier-one.log
     else
         echo "ZeroTier-One was not running" ;
