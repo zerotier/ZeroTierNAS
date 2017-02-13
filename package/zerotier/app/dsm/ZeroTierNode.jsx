@@ -173,7 +173,7 @@ var ZeroTierNode = React.createClass({
 				}.bind(this)
 			});
 		} else {
-			alert('To join a network, enter its 16-digit network ID.');
+			alert('To join a network, create a network at https://my.zerotier.com and enter its 16-digit network ID here.');
 		}
 	},
 	resetService: function(event) {

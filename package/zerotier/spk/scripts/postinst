@@ -41,7 +41,7 @@ cp -f ${SYNOPKG_PKGDEST}/bin/ztui_server.js ${ZT_HOME_DIR}/ztui_server.js
 cp -f ${SYNOPKG_PKGDEST}/bin/reset.sh ${ZT_HOME_DIR}/reset.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/start.sh ${ZT_HOME_DIR}/start.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/tun.sh ${ZT_HOME_DIR}/tun.sh
-cp -f ${SYNOPKG_PKGDEST}/bin/zt_watchdog.sh ${ZT_HOME_DIR}/zt_watchdog.sh
+cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/package.json ${ZT_HOME_DIR}/package.json
 
 # "patch" synology script which deletes routes
