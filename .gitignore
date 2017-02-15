@@ -1,5 +1,9 @@
 *.DS_Store
 package/zerotier/gpg/*.gpg
-package/zerotier/app/bin/zerotier-one
-package/zerotier/app/bin/zerotier-one.*
-binaries
+package/zerotier-headless/gpg/*.gpg
+zerotier-one.x86_64
+zerotier-one.armv7
+build/tmp
+build/docs
+build/dependency-cache
+build/classes
