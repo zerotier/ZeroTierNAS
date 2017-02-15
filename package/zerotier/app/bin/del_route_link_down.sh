@@ -35,7 +35,7 @@ case $1 in
         echo "Synology";
         ;;
         --post)
-#		del_route
+		del_route
         ;;
         *)
         echo "Usage: $0 --sdk-mod-ver|--name|--pkg-ver|--vendor|--pre|--post"

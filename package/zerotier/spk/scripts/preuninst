@@ -11,7 +11,6 @@ rm -f ${ZT_BIN_DIR}/zerotier-idtool
 rm -f ${ZT_BIN_DIR}/zerotier-one
 rm -rf ${ZT_HOME_DIR}/iddb.d
 rm -rf ${ZT_HOME_DIR}/updates.d
-rm -rf ${ZT_HOME_DIR}/networks.d
 rm -f ${ZT_HOME_DIR}/zerotier-one.port
 
 # proxy service (provides service for UI in DSM)
@@ -19,7 +18,7 @@ rm -rf ${ZT_HOME_DIR}/ztui_server.js
 rm -rf ${ZT_HOME_DIR}/reset.sh
 rm -rf ${ZT_HOME_DIR}/start.sh
 rm -rf ${ZT_HOME_DIR}/tun.sh
-rm -rf ${ZT_HOME_DIR}/zt_watchdog.sh
+rm -rf ${ZT_HOME_DIR}/ztui_watchdog.sh
 rm -rf ${ZT_HOME_DIR}/package.json
 
 cd /var/lib/zerotier-one
