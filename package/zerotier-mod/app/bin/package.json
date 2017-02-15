@@ -1,0 +1,17 @@
+{
+  "name": "ztui_server",
+  "version": "0.0.1",
+  "description": "Proxy service for ZeroTier UI in Synology DSM",
+  "main": "ztui_server.js",
+  "start": "sh start.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joseph.henry@zerotier.com",
+  "license": "GNU GPL",
+  "dependencies": {
+    "shell-escape": "0.2.0",
+    "xmlhttprequest": "^1.8.0",
+    "async": "^2.1.4"
+  }
+}

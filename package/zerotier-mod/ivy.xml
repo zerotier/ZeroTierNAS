@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+	<info organisation="net.filebot" module="ant-spk-example" />
+	<dependencies>
+		<dependency org="net.filebot" name="ant-spk" rev="latest.release" />
+	</dependencies>
+</ivy-module>
