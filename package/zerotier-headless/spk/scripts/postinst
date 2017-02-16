@@ -40,9 +40,6 @@ cp -f ${SYNOPKG_PKGDEST}/bin/reset.sh ${ZT_HOME_DIR}/reset.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/tun.sh ${ZT_HOME_DIR}/tun.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
 
-# "patch" synology script which deletes routes
-#cp -f ${SYNOPKG_PKGDEST}/bin/del_route_link_down.sh /usr/libexec/net/if_link_down/del_route_link_down.sh
-
 # load TUN kernel module
 SERVICE="zerotier"
 ZEROTIER_MODULE="tun.ko"

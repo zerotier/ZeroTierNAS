@@ -44,9 +44,6 @@ cp -f ${SYNOPKG_PKGDEST}/bin/tun.sh ${ZT_HOME_DIR}/tun.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
 cp -f ${SYNOPKG_PKGDEST}/bin/package.json ${ZT_HOME_DIR}/package.json
 
-# "patch" synology script which deletes routes
-#cp -f ${SYNOPKG_PKGDEST}/bin/del_route_link_down.sh /usr/libexec/net/if_link_down/del_route_link_down.sh
-
 # start zt ui proxy server
 cd /var/lib/zerotier-one
 npm install
