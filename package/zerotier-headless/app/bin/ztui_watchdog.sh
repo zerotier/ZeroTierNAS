@@ -130,33 +130,6 @@ case x${ARG_1} in
                 sleep 1
                 /usr/sbin/zerotier-one -d
             fi
-
-        # Re-Add routes
-            device=""
-            route=""
-
-            for i in $(curl http://$ztserviceaddr:$ztport/network?auth=$(sudo cat $zt_AUTHFILE) | grep -E "portDeviceName|route" | grep -o -e '[0-9]\+[.][0-9]\+[.][0-9]\+[.][0-9]\+[\][/][0-9]\+' -e 'zt[0-9]\+' | sed 's/[\_-]//g') ; do
-                    #log $i
-                    if [[ $i =~ "zt" ]]
-                    then
-                        device=$i
-                    else
-                        #if [[ -n $route ]]
-                        #then
-                        #    log "two routes in a row?"
-                        #fi
-                        echo ""
-                        route=$i
-                    fi
-                if [[ -n $device && -n $route ]]
-                    then
-                        echo ""
-                        exec_str=$(ip route add dev $device $route)
-                        #log $exec_str
-                        device=""
-                        route=""
-               fi
-            done
         done
     ;;
 
