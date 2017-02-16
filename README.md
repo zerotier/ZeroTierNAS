@@ -7,7 +7,7 @@ Synology DiskStation NAS + ZeroTier
 
 ### Building a DSM 6.0 Package
 
- - Build ZeroTier binaries for your target architecture: [ZeroTier](https://github.com/zerotier/ZeroTierOne)
+ - Build ZeroTier binaries for your target architecture: `make ZT_SYNOLOGY=1` [ZeroTier](https://github.com/zerotier/ZeroTierOne)
  - Place binary(ies) in `package/zerotier/app/bin`
  - Name binaries to reflect arch: (e.g. `zerotier-one.x86_64` or `zerotier-one.armv7`)
  - Install Apache Ant
