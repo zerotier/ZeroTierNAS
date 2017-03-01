@@ -39,6 +39,8 @@ ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-idtool
 
 rm -rf ${ZT_HOME_DIR}/devicemap
 
+cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
+
 # nginx proxy config
 cp -f ${SYNOPKG_PKGDEST}/dsm/dsm.zerotier.conf /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
 # for nginx to reload new reverse proxy conf file
