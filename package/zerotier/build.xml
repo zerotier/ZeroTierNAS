@@ -2,19 +2,15 @@
 <project name="Ant SPK Task" basedir="." default="spk" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:syno="antlib:net.filebot.ant.spk">
 
 	<property name="package" value="zerotier" />
-	<property name="version" value="0.2" />
+	<property name="version" value="0.3" />
 
 	<target name="spk" description="Build SPK package">
 		<syno:spk destdir="dist" name="${package}" version="${version}" arch="noarch">
 			<info name="displayname" value="ZeroTier" />
-			<info name="description" value="An Ethernet switch for Earth. Create flat virtual Ethernet networks of almost unlimited size." />
+			<info name="description" value="An Ethernet switch for Earth. Create flat virtual networks of almost unlimited size." />
 
 			<info name="maintainer" value="joseph.henry@zerotier.com" />
 			<info name="maintainer_url" value="https://zerotier.com" />
-			
-			<info name="install_dep_packages" value="Node.js_v4" />
-			<info name="install_dep_services" value="Node.js_v4" />
-			<info name="start_dep_services" value="Node.js_v4" />
 			
 			<info name="dsmappname" value="org.example.ZeroTier" />
 			<info name="dsmuidir" value="dsm" />
