@@ -3,8 +3,6 @@
 ZT_BIN_DIR="/usr/sbin"
 ZT_HOME_DIR="/var/lib/zerotier-one"
 
-# echo "ZeroTier home dir = /var/lib/zerotier-one" > $SYNOPKG_TEMP_LOGFILE
-
 echo Copying ZeroTier files...
 mkdir -p ${ZT_BIN_DIR}
 
@@ -39,17 +37,12 @@ ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-one
 ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-cli
 ln -s ../../..${ZT_BIN_DIR}/zerotier-one ${ZT_HOME_DIR}/zerotier-idtool
 
-# proxy service (provides service for UI in DSM)
-cp -f ${SYNOPKG_PKGDEST}/bin/ztui_server.js ${ZT_HOME_DIR}/ztui_server.js
-cp -f ${SYNOPKG_PKGDEST}/bin/reset.sh ${ZT_HOME_DIR}/reset.sh
-cp -f ${SYNOPKG_PKGDEST}/bin/start.sh ${ZT_HOME_DIR}/start.sh
-cp -f ${SYNOPKG_PKGDEST}/bin/tun.sh ${ZT_HOME_DIR}/tun.sh
-cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
-cp -f ${SYNOPKG_PKGDEST}/bin/package.json ${ZT_HOME_DIR}/package.json
+rm -rf ${ZT_HOME_DIR}/devicemap
 
-# start zt ui proxy server
-cd /var/lib/zerotier-one
-npm install
+# nginx proxy config
+cp -f ${SYNOPKG_PKGDEST}/dsm/dsm.zerotier.conf /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
+# for nginx to reload new reverse proxy conf file
+nginx -s reload
 
 # load TUN kernel module
 SERVICE="zerotier"

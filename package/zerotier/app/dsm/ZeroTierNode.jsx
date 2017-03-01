@@ -1,9 +1,9 @@
 var ZeroTierNode = React.createClass({
 	getInitialState: function() {
-		window.ui_proxy_port = 3090
+		window.ui_port = 5000
 		// get local address (of NAS) for ZT UI server and auth functions
 		window.auth_addr = "http://" + document.location.host + "/"
-		window.proxy_addr = "http://" + document.location.hostname + ":" + ui_proxy_port + "/"
+		window.ui_addr = "http://" + document.location.hostname + ":" + ui_port + "/"
 		this.syno_init()
 		return {
 			address: '----------',
@@ -21,9 +21,8 @@ var ZeroTierNode = React.createClass({
 	},
 	updatePeers: function() {
 		Ajax.call({
-			url: window.proxy_addr+'peer' 
-				+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-			cache: false,
+			url: window.ui_addr+'peer' 
+				+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 			type: 'GET',
 			success: function(data) {
 				if (data) {
@@ -39,9 +38,8 @@ var ZeroTierNode = React.createClass({
 	},
 	updateNetworks: function() {
 		Ajax.call({
-			url: window.proxy_addr+'network' 
-				+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-			cache: false,
+			url: window.ui_addr+'network' 
+				+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 			type: 'GET',
 			success: function(data) {
 				if (data) {
@@ -63,10 +61,9 @@ var ZeroTierNode = React.createClass({
     },
     dispatchRequest: function(path, parameters) {
         Ajax.call({
-        	url: window.proxy_addr + path 
-        		+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
+        	url: window.ui_addr + path 
+        		+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
             type: 'GET',
-            cache: false,
             success: function (response) {
                 var data = JSON.parse(response.responseText)
             	alert('data=' + data)
@@ -116,7 +113,6 @@ var ZeroTierNode = React.createClass({
 
 		Ajax.call({
 			url: window.auth_addr+'webman/login.cgi',
-			cache: false,
 			type: 'GET',
 			success: function(data) {
 				this.alertedToFailure = false;
@@ -136,8 +132,7 @@ var ZeroTierNode = React.createClass({
 	updateAll: function() {
 		if(this.authenticated) {
 			Ajax.call({
-				url: window.proxy_addr+'status' + '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-				cache: false,
+				url: window.ui_addr+'status' + '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 				type: 'GET',
 				success: function(data) {
 					this.alertedToFailure = false;
@@ -159,9 +154,8 @@ var ZeroTierNode = React.createClass({
 		event.preventDefault();
 		if ((this.networkToJoin)&&(this.networkToJoin.length === 16)) {
 			Ajax.call({
-				url: window.proxy_addr+'network/'+this.networkToJoin 
-					+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-				cache: false,
+				url: window.ui_addr+'network/'+this.networkToJoin 
+					+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 				type: 'POST',
 				success: function(data) {
 					this.networkToJoin = '';
@@ -179,9 +173,8 @@ var ZeroTierNode = React.createClass({
 	resetService: function(event) {
 		event.preventDefault();
 		Ajax.call({
-			url: window.proxy_addr+'reset' 
-				+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-			cache: false,
+			url: window.ui_addr+'reset' 
+				+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 			type: 'POST',
 			success: function(data) {
 				// ...

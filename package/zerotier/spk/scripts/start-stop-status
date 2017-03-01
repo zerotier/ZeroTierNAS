@@ -8,7 +8,6 @@ case "$1" in
         echo "Starting ZeroTier-One" ;
         cd /var/lib/zerotier-one/ ; 
         ./ztui_watchdog.sh -start ;
-        ./tun_install.sh ;
         /usr/sbin/zerotier-one -d ;
         echo "$(date) Started ZeroTier-One" >> /opt/var/log/zerotier-one.log ;
     fi
@@ -19,7 +18,6 @@ case "$1" in
         echo "Stopping ZeroTier-One";
         killall zerotier-one ;
         pkill -f "ztui_watchdog" ;
-        pkill -f "ztui_server" ;
         echo "$(date) Stopped ZeroTier-One" >> /opt/var/log/zerotier-one.log
     else
         echo "ZeroTier-One was not running" ;

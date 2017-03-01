@@ -5,8 +5,7 @@ var ZeroTierNetwork = React.createClass({
 
 	leaveNetwork: function(event) {
 		Ajax.call({
-			url: window.proxy_addr+'network/'+this.props.nwid+ '?' + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL + '&' + window.COOKIE_KEY + '=' + window.COOKIE_VAL,
-			cache: false,
+			url: window.ui_addr+'network/'+this.props.nwid+ '?' + window.COOKIE_KEY + '=' + window.COOKIE_VAL + window.CSRF_TOKEN_KEY + '=' + window.CSRF_TOKEN_VAL,
 			type: 'DELETE',
 			success: function(data) {
 				if (this.props.onNetworkDeleted)
