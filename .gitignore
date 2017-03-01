@@ -5,6 +5,7 @@ package/zerotier-mod/gpg/*.gpg
 package/zerotier-headless-mod/gpg/*.gpg
 zerotier-one.x86_64
 zerotier-one.armv7
+zerotier-one.i686
 build/tmp
 build/docs
 build/dependency-cache
