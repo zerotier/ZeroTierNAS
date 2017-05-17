@@ -1,0 +1,20 @@
+Package: zerotier
+Section: Apps
+Version: 1.0
+Packager: ZeroTier, Inc.
+Email: joseph.henry@zerotier.com	
+Homepage: http://www.zerotier.com
+Description: A smart ethernet switch for Earth. Easily create VPNs of any size
+AddonShowName: ZeroTier
+Icon: zerotier.png
+AddonIndexPage: index.html
+AddonUsedPort:9993
+InstDepend:
+InstConflict:
+StartDepend:
+StartConflict:
+CenterType:1
+UserControl:0
+MinFWVer:
+MaxFWVer:
+IndividualFlag:
