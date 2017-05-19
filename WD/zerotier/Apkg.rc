@@ -4,7 +4,7 @@ Version: 1.0
 Packager: ZeroTier, Inc.
 Email: joseph.henry@zerotier.com	
 Homepage: http://www.zerotier.com
-Description: A smart ethernet switch for Earth. Easily create VPNs of any size
+Description: A smart ethernet switch for Earth. Easily create VPNs of any size.
 AddonShowName: ZeroTier
 Icon: zerotier.png
 AddonIndexPage: index.html
