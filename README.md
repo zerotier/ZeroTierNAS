@@ -4,7 +4,7 @@
 
 <hr>
 
-We recommend just downloading our pre-built binaries for your specific device as building these packages can be somewhat tricky. They can be found here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=git_nas)
+We recommend downloading our **pre-built** binaries for your specific device as building these packages can be somewhat tricky. They can be found here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
 **Got a question or feature request?** Join us on [stackoverflow](http://stackoverflow.com/questions/tagged/zerotier), or [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 
