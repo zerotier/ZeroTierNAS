@@ -12,12 +12,9 @@ if [ ${mtype} == 'x86_64' ];
 		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.x86_64 ${SYNOPKG_PKGDEST}/bin/zerotier-one
 elif [[ ${mtype} == 'i386' ]] || [[ ${mtype} == 'i486' ]] || [[ ${mtype} == 'i586' ]] || [[ ${mtype} == 'i686' ]];
 	then
-		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.x86 ${SYNOPKG_PKGDEST}/bin/zerotier-one
-elif [[ ${mtype} == 'armv5tel' ]]
-	then 
-		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armv5tel ${SYNOPKG_PKGDEST}/bin/zerotier-one
+		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.i686 ${SYNOPKG_PKGDEST}/bin/zerotier-one
 else
-        mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armhf ${SYNOPKG_PKGDEST}/bin/zerotier-one
+        mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armv7 ${SYNOPKG_PKGDEST}/bin/zerotier-one
 fi
 
 # copy zerotier-one

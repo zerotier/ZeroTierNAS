@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ZT_BIN_DIR="/usr/sbin"
+ZT_HOME_DIR="/var/lib/zerotier-one"
+
+rm -f ${ZT_HOME_DIR}/zerotier-one
+rm -f ${ZT_HOME_DIR}/zerotier-cli
+rm -f ${ZT_HOME_DIR}/zerotier-idtool
+rm -f ${ZT_BIN_DIR}/zerotier-cli
+rm -f ${ZT_BIN_DIR}/zerotier-idtool
+rm -f ${ZT_BIN_DIR}/zerotier-one
+rm -rf ${ZT_HOME_DIR}/iddb.d
+rm -rf ${ZT_HOME_DIR}/updates.d
+rm -f ${ZT_HOME_DIR}/zerotier-one.port
+
+rm -rf /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
+rm -rf ${ZT_HOME_DIR}/ztui_watchdog.sh
+
+# TODO: check devicemap and remove all ls /etc/sysconfig/network-scripts entries
+
+exit 0

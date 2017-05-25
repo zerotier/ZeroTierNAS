@@ -4,7 +4,7 @@
     <item>
       <procudt_id>0</procudt_id>
       <custom_id>20</custom_id>
-      <model_id>1</model_id>
+      <model_id>0</model_id>
       <user_control>0</user_control>
       <center_type>1</center_type>
       <individual_flag>0</individual_flag>
@@ -12,7 +12,7 @@
       <show>ZeroTier</show>
       <enable>1</enable>
       <version>1.0</version>
-      <date>20170519</date>
+      <date>20170522</date>
       <inst_date/>
       <path/>
       <ps_name/>
@@ -26,7 +26,7 @@
       <inst_conflict/>
       <start_depend/>
       <start_conflict/>
-      <description>A smart ethernet switch for Earth. Easily create VPNs of any size</description>
+      <description>A smart ethernet switch for Earth. Easily create VPNs of any size.</description>
       <icon>zerotier.png</icon>
       <MinFWVer/>
       <MaxFWVer/>
