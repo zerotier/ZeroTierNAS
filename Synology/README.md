@@ -1,11 +1,13 @@
-Synology DiskStation NAS + ZeroTier
+Western Digital (WD) MyCloud
 ======
 
 [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 
- - The official package will be available in the *Synology Package Center* and available for download on our website [here](https://www.zerotier.com/product-one.shtml), if you need to build it yourself, here are the instructions (tested on CentOS 7):
+Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
-### Building a DSM 6.0 Package
+***
+
+#### Build Instructions:
 
  - Build ZeroTier binaries for your target architecture: `make ZT_SYNOLOGY=1` [ZeroTier](https://github.com/zerotier/ZeroTierOne)
  - Place binary(ies) in `package/zerotier/app/bin`

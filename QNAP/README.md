@@ -3,9 +3,11 @@ QNAP
 
 [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 
-We recommend downloading our **pre-built** binaries for your specific device as building these packages can be somewhat tricky. They can be found here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
+Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
-####
+***
+
+#### Build Instructions:
 
 ```
 ln -s /bin/sh /bin/bash
@@ -14,10 +16,11 @@ qbuild --create-env ZeroTier
 cd ZeroTier/
 ```
 
-Set config options (optional)
+Set config options (optional):
+
 `vi qpkg.cfg`
 
-Build
+Build:
 
 `qbuild`
 
