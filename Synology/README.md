@@ -1,4 +1,4 @@
-Western Digital (WD) MyCloud
+Synology 
 ======
 
 [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
