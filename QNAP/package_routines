@@ -108,9 +108,6 @@
 
 #
 PKG_MAIN_REMOVE="{
-rm -rf /usr/sbin/zerotier-one
-rm -rf /usr/sbin/zerotier-cli
-rm -rf /var/lib/zerotier-one
 }"
 
 #
@@ -121,8 +118,9 @@ rm -rf /var/lib/zerotier-one
 # Define any package specific initialization that shall be performed
 # before the package is installed.
 ######################################################################
-#pkg_init(){
-#}
+pkg_init(){
+	modprob tun
+}
 #
 ######################################################################
 # Define any package specific requirement checks that shall be
@@ -136,15 +134,16 @@ rm -rf /var/lib/zerotier-one
 # the package is installed.
 ######################################################################
 pkg_pre_install(){
+	#log "pkg_pre_install"
 }
 
 #
 pkg_install(){
-mkdir -p /var/lib/zerotier-one
-ln -s zerotier-one /usr/sbin/zerotier-one
-ln -s zerotier-one /usr/sbin/zerotier-cli
+	log "pkg_install"
 }
 
 #
-#pkg_post_install(){
-#}
+pkg_post_install(){
+	log $SYS_QPKG_INSTALL_PATH
+	modprobe tun
+}
