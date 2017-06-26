@@ -1,13 +1,13 @@
-Synology 
+ZeroTier for Synology 
 ======
 
 [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 
-Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
+**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
 ***
 
-#### Build Instructions:
+#### Package Build Instructions:
 
  - Build ZeroTier binaries for your target architecture: `make ZT_SYNOLOGY=1` [ZeroTier](https://github.com/zerotier/ZeroTierOne)
  - Place binary(ies) in `package/zerotier/app/bin`
