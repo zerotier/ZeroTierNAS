@@ -14,9 +14,12 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 
 | Model | CPU | Supported | Download | Notes |
 | --- | --- | --- | --- | --- |
-| DS216+II | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
-| DS916+   | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
-| DS414j+  | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS216+II  | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS916+    | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS414j+   | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS1515+   | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS3615xs  | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS214play | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 
 *Note, Synology devices not listed here might still work, we just haven't tested them yet. Give it a shot!*
 
