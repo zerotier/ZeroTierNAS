@@ -30,3 +30,11 @@ ZeroTier for QNAP
  - On QNAP System, enter `ZeroTier` directory and run `qbuild`
 
  - Tar up the result and send it back to your dev system.
+
+ #### For developers:
+
+ Toolchains:
+
+  - [x86](https://sourceforge.net/projects/qosgpl/files/QNAP%20NAS%20Tool%20Chains/)
+  
+  - [Marvell](https://sourceforge.net/projects/qosgpl/files/QNAP%20NAS%20Tool%20Chains/)

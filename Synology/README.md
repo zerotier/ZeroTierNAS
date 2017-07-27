@@ -5,6 +5,8 @@ ZeroTier for Synology
 
 **Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
+**Last tests on: DSM 6.1.3-15152 Update 1 (2017/07/17)**
+
 ***
 
 #### Package Build Instructions:
@@ -17,7 +19,7 @@ ZeroTier for Synology
 
 ```
 export ANT_HOME=/usr/share/ant/ 
-ant -f $ANT_HOM/fetch.xml -Ddest=system
+ant -f $ANT_HOME/fetch.xml -Ddest=system
 ```
 
 ### Generate GPG Key

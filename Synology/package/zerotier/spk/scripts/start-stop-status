@@ -6,8 +6,15 @@ case "$1" in
     then echo "ZeroTier-One is already running."
     else
         echo "Starting ZeroTier-One" ;
-        cd /var/lib/zerotier-one/ ; 
-        ./ztui_watchdog.sh -start ;
+        cd /var/lib/zerotier-one/ ;
+
+        # watchdog
+        if ( pidof /bin/bash ./ztui_watchdog.sh )
+            then echo "ZeroTier watchdog daemon already running"
+        else
+            ./ztui_watchdog.sh -start ;
+        fi
+
         /usr/sbin/zerotier-one -d ;
         echo "$(date) Started ZeroTier-One" >> /opt/var/log/zerotier-one.log ;
     fi

@@ -1,20 +1,38 @@
 #!/bin/sh
 
-ZT_BIN_DIR="/usr/sbin"
-ZT_HOME_DIR="/var/lib/zerotier-one"
+# kill stuff (because synology doesn't always call the control script properly)
+echo "$(date) UNINSTALL: killing zerotier-one and watchdog" >> /opt/var/log/zerotier-one.log ;
+killall zerotier-one ;
+pkill -f "ztui_watchdog" ;
 
-rm -f ${ZT_HOME_DIR}/zerotier-one
-rm -f ${ZT_HOME_DIR}/zerotier-cli
-rm -f ${ZT_HOME_DIR}/zerotier-idtool
-rm -f ${ZT_BIN_DIR}/zerotier-cli
-rm -f ${ZT_BIN_DIR}/zerotier-idtool
-rm -f ${ZT_BIN_DIR}/zerotier-one
-rm -rf ${ZT_HOME_DIR}/iddb.d
-rm -rf ${ZT_HOME_DIR}/updates.d
-rm -f ${ZT_HOME_DIR}/zerotier-one.port
+echo "$(date) UNINSTALL: removing /var/lib/zerotier-one (where identities are kept)" >> /opt/var/log/zerotier-one.log ;
+rm -rf /var/lib/zerotier-one
 
+# remove old symlinks (if any)
+echo "$(date) UNINSTALL: removing old symlinks" >> /opt/var/log/zerotier-one.log ;
+rm -f /usr/sbin/zerotier-one
+rm -f /usr/sbin/zerotier-cli
+rm -f /usr/sbin/zerotier-idtool
+
+rm -f /usr/bin/zerotier-one
+rm -f /usr/bin/zerotier-cli
+rm -f /usr/bin/zerotier-idtool
+
+rm -f /usr/local/sbin/zerotier-one
+rm -f /usr/local/sbin/zerotier-cli
+rm -f /usr/local/sbin/zerotier-idtool
+
+rm -f /usr/local/bin/zerotier-one
+rm -f /usr/local/bin/zerotier-cli
+rm -f /usr/local/bin/zerotier-idtool
+
+rm -f /var/lib/zerotier-one/zerotier-one
+rm -f /var/lib/zerotier-one/zerotier-cli
+rm -f /var/lib/zerotier-one/zerotier-idtool
+
+# nginx de-config
+echo "$(date) UNINSTALL: removing nginx reverse proxy config" >> /opt/var/log/zerotier-one.log ;
 rm -rf /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
-rm -rf ${ZT_HOME_DIR}/ztui_watchdog.sh
 
 # TODO: check devicemap and remove all ls /etc/sysconfig/network-scripts entries
 
