@@ -17,6 +17,7 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 | DS216+II  | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS916+    | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS414j+   | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
+| DS413j    | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS1515+   | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS3615xs  | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS214play | | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
