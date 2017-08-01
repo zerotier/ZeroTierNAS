@@ -22,7 +22,7 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 | DS3615xs  | Intel Core i3-4130           | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 | DS214play | Intel Atom CE5335            | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
 
-*Note, Synology devices not listed here might still work, we just haven't tested them yet. Give it a shot!*
+*Note, Synology devices not listed here might still work, we just haven't tested them yet. Give it a shot! If you're interested in us supporting something that isn't on this page, find out [which CPU it uses](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) and let us know.*
 
 ### QNAP
 
