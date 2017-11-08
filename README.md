@@ -28,9 +28,9 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 
 | Model | CPU | Supported | Download | Notes |
 | --- | --- | --- | --- | --- |
-| TS-251  | Intel Atom    | YES     | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
-| TS-453A | Intel Celeron | PENDING | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
-
+| TS-251  | Intel Atom    | YES                               | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
+| TS-453A | Intel Celeron | PENDING                           | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
+| TS-869L | Intel Atom    | YES [requires QVPN service](http://docs.qnap.com/nas/4.3/cat2/en/index.html?qvpn.htm)       | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
 *For 32-bit `QNAP` devices, download [ZeroTier_1.2.4_x86.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86.qpkg)*
 
 ### WD
