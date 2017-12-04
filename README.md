@@ -26,8 +26,9 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
  
 ***
 
-### Synology (DSM 6.1+)
+### Synology
 
+ - Currently supporting DSM 6.1+
  - See [here](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) or [here](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) to determine which chip architecture your device has. Or just ask and we can help you.
 
 | Architecture | Download |
