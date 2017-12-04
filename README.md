@@ -9,6 +9,11 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
 **Got a question or feature request?** Join us on [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 ***
 
+### Netgear ReadyNAS
+
+See: https://github.com/NAStools/zerotierone
+***
+
 ### QNAP
 
 | Model | CPU | Supported | Download | Notes |
@@ -21,9 +26,7 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
 
 ### Synology (DSM 6.1+)
 
- - Step 1: See [here](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) or [here](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) to determine which chip architecture your device has. Or just ask and we can help you.
-
- - Step 2: Download the correct package for your device.
+ - See [here](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) or [here](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) to determine which chip architecture your device has. Or just ask and we can help you.
 
 | Architecture | Download |
 | --- | --- |
