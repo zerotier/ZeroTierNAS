@@ -12,6 +12,38 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 
 ### Synology
 
+Step 1: See [which chip architecture](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) your device has.
+
+Step 2: Download the correct package for your specific device.
+
+DSM 6.1+:
+
+| Architecture | Download |
+| --- | --- |
+| x64  | [zerotier-synology-x64.spk](https://download.zerotier.com/dist/zerotier-synology-x64.spk?pk_campaign=github_zerotiernas) |
+| x86  | [zerotier-synology-x86.spk](https://download.zerotier.com/dist/zerotier-synology-x86.spk?pk_campaign=github_zerotiernas) |
+| 88f6281  | [zerotier-synology-88f6281.spk](https://download.zerotier.com/dist/zerotier-synology-88f6281.spk?pk_campaign=github_zerotiernas) |
+| alpine  | [zerotier-synology-alpine.spk](https://download.zerotier.com/dist/zerotier-synology-alpine.spk?pk_campaign=github_zerotiernas) |
+| apollolake  | [zerotier-synology-apollolake.spk](https://download.zerotier.com/dist/zerotier-synology-apollolake.spk?pk_campaign=github_zerotiernas) |
+| armada370  | [zerotier-synology-armada370.spk](https://download.zerotier.com/dist/zerotier-synology-armada370.spk?pk_campaign=github_zerotiernas) |
+| armada375  | [zerotier-synology-armada375.spk](https://download.zerotier.com/dist/zerotier-synology-armada375.spk?pk_campaign=github_zerotiernas) |
+| armada38x  | [zerotier-synology-armada38x.spk](https://download.zerotier.com/dist/zerotier-synology-armada38x.spk?pk_campaign=github_zerotiernas) |
+| armadaxp  | [zerotier-synology-armadaxp.spk](https://download.zerotier.com/dist/zerotier-synology-armadaxp.spk?pk_campaign=github_zerotiernas) |
+| avoton  | [zerotier-synology-avoton.spk](https://download.zerotier.com/dist/zerotier-synology-avoton.spk?pk_campaign=github_zerotiernas) |
+| braswell  | [zerotier-synology-braswell.spk](https://download.zerotier.com/dist/zerotier-synology-braswell.spk?pk_campaign=github_zerotiernas) |
+| broadwell  | [zerotier-synology-broadwell.spk](https://download.zerotier.com/dist/zerotier-synology-broadwell.spk?pk_campaign=github_zerotiernas) |
+| bromolow  | [zerotier-synology-bromolow.spk](https://download.zerotier.com/dist/zerotier-synology-bromolow.spk?pk_campaign=github_zerotiernas) |
+| cedarview  | [zerotier-synology-cedarview.spk](https://download.zerotier.com/dist/zerotier-synology-cedarview.spk?pk_campaign=github_zerotiernas) |
+| comcerto2k  | [zerotier-synology-comcerto2k.spk](https://download.zerotier.com/dist/zerotier-synology-comcerto2k.spk?pk_campaign=github_zerotiernas) |
+| denverton  | [zerotier-synology-denverton.spk](https://download.zerotier.com/dist/zerotier-synology-denverton.spk?pk_campaign=github_zerotiernas) |
+| evansport  | [zerotier-synology-evansport.spk](https://download.zerotier.com/dist/zerotier-synology-evansport.spk?pk_campaign=github_zerotiernas) |
+| grantley  | [zerotier-synology-grantley.spk](https://download.zerotier.com/dist/zerotier-synology-grantley.spk?pk_campaign=github_zerotiernas) |
+| hi3535  | [zerotier-synology-hi3535.spk](https://download.zerotier.com/dist/zerotier-synology-hi3535.spk?pk_campaign=github_zerotiernas) |
+| monaco  | [zerotier-synology-monaco.spk](https://download.zerotier.com/dist/zerotier-synology-monaco.spk?pk_campaign=github_zerotiernas) |
+| powerpc  | [zerotier-synology-powerpc.spk](https://download.zerotier.com/dist/zerotier-synology-powerpc.spk?pk_campaign=github_zerotiernas) |
+| qoriq  | [zerotier-synology-qoriq.spk](https://download.zerotier.com/dist/zerotier-synology-qoriq.spk?pk_campaign=github_zerotiernas) |
+| rtd1296  | [zerotier-synology-rtd1296.spk](https://download.zerotier.com/dist/zerotier-synology-rtd1296.spk?pk_campaign=github_zerotiernas) |
+
 | Model | CPU | Supported | Download | Notes |
 | --- | --- | --- | --- | --- |
 | DS216+II  | Intel Celeron N3060          | YES | [zerotier-one.spk](https://download.zerotier.com/dist/zerotier-one.spk) | |
