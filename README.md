@@ -4,11 +4,10 @@
 
 <hr>
 
-Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
+Pre-Built Binaries/Packages for other devices and platforms can be found here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_zerotiernas)
 
-**Got a question or feature request?** Join us on [stackoverflow](http://stackoverflow.com/questions/tagged/zerotier), or [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
-
-## Supported Devices:
+**Got a question or feature request?** Join us on [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
+***
 
 ### QNAP
 
@@ -18,6 +17,7 @@ Pre-Built Binaries/Packages Here: [zerotier.com/download.shtml](https://zerotier
 | TS-453A | Intel Celeron | PENDING                           | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
 | TS-869L | Intel Atom    | YES [requires QVPN service](http://docs.qnap.com/nas/4.3/cat2/en/index.html?qvpn.htm)       | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg) | No GUI |
 *For 32-bit `QNAP` devices, download [ZeroTier_1.2.4_x86.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86.qpkg)*
+***
 
 ### Synology
 
@@ -52,6 +52,7 @@ DSM 6.1+:
 | powerpc  | [zerotier-synology-powerpc.spk](https://download.zerotier.com/dist/zerotier-synology-powerpc.spk?pk_campaign=github_zerotiernas) |
 | qoriq  | [zerotier-synology-qoriq.spk](https://download.zerotier.com/dist/zerotier-synology-qoriq.spk?pk_campaign=github_zerotiernas) |
 | rtd1296  | [zerotier-synology-rtd1296.spk](https://download.zerotier.com/dist/zerotier-synology-rtd1296.spk?pk_campaign=github_zerotiernas) |
+***
 
 ### WD
 
