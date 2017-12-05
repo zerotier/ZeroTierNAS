@@ -1,43 +1,82 @@
 #! /bin/sh
 
+DNAME="ZeroTier"
+PACKAGE="zerotier"
+INSTALL_DIR="/usr/local/${PACKAGE}"
+ZT_HOME_DIR="/var/lib/zerotier-one"
+ZEROTIER="${INSTALL_DIR}/bin/zerotier-one"
+WATCHDOG="${INSTALL_DIR}/bin/ztui_watchdog.sh"
+PID_FILE="${ZT_HOME_DIR}/zerotier-one.pid"
+
+start_daemon ()
+{
+    ${ZEROTIER} -d ;
+    echo $! >> ${PID_FILE}
+    ${WATCHDOG} -start ;
+    echo "$(date) Started ZeroTier" >> /opt/var/log/zerotier-one.log ;
+}
+
+stop_daemon ()
+{
+    kill `cat ${PID_FILE}`
+    #wait_for_status 1 20 || kill -9 `cat ${PID_FILE}`
+    rm -f ${PID_FILE}
+    pkill -f "ztui_watchdog" ;
+}
+
+daemon_status ()
+{
+    PID=$(cat ${PID_FILE})
+    if [ -f ${PID_FILE} ] && ps -p ${PID} > /dev/null ; then 
+        return 0
+    else
+        rm -f ${PID_FILE}
+        return 1
+    fi
+}
+
+wait_for_status ()
+{
+    counter=$2
+    while [ ${counter} -gt 0 ]; do
+        daemon_status
+        [ $? -eq $1 ] && return
+        let counter=counter-1
+        sleep 1
+    done
+    return 1
+}
+
 case "$1" in
   start)
-    if ( pidof zerotier-one )
-    then echo "ZeroTier-One is already running."
+    if daemon_status; then 
+        echo "${DNAME} is already running"
     else
-        echo "Starting ZeroTier-One" ;
-        cd /var/lib/zerotier-one/ ;
-
-        # watchdog
-        if ( pidof /bin/bash ./ztui_watchdog.sh )
-            then echo "ZeroTier watchdog daemon already running"
-        else
-            ./ztui_watchdog.sh -start ;
-        fi
-
-        /usr/sbin/zerotier-one -d ;
-        echo "$(date) Started ZeroTier-One" >> /opt/var/log/zerotier-one.log ;
+        echo "$(date) Starting ${DNAME} ... " >> /opt/var/log/zerotier-one.log
+        echo "Starting ${DNAME} ... " ;
+        start_daemon
     fi
     ;;
   stop)
-    if ( pidof zerotier-one )
-    then
-        echo "Stopping ZeroTier-One";
-        killall zerotier-one ;
-        pkill -f "ztui_watchdog" ;
-        echo "$(date) Stopped ZeroTier-One" >> /opt/var/log/zerotier-one.log
+    if daemon_status; then
+        echo "$(date) Stopping ${DNAME}" >> /opt/var/log/zerotier-one.log
+        echo "Stopping ${DNAME}"
+        stop_daemon
     else
-        echo "ZeroTier-One was not running" ;
+        echo "${DNAME} is not running" ;
     fi
     ;;
   status)
-    if ( pidof zerotier-one )
-    then echo "ZeroTier-One is running."
-    else echo "ZeroTier-One is NOT running"
+    if daemon_status; then
+        echo "${DNAME} is running."
+        exit 0
+    else 
+        echo "${DNAME} is not running"
+        exit 1
     fi
     ;;
   *)
-    echo "Usage: /etc/init.d/zerotier-one {start|stop|status}"
+    echo "Usage: /etc/init.d/zerotier {start|stop|status}"
     exit 1
     ;;
 esac

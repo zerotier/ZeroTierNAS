@@ -1,39 +1,24 @@
 #!/bin/sh
 
-# kill stuff (because synology doesn't always call the control script properly)
+INSTALL_DIR="/usr/local/${PACKAGE}"
+ZT_HOMEDIR="/var/lib/zerotier-one"
+
 echo "$(date) UNINSTALL: killing zerotier-one and watchdog" >> /opt/var/log/zerotier-one.log ;
 killall zerotier-one ;
 pkill -f "ztui_watchdog" ;
-
 echo "$(date) UNINSTALL: removing /var/lib/zerotier-one (where identities are kept)" >> /opt/var/log/zerotier-one.log ;
-rm -rf /var/lib/zerotier-one
-
-# remove old symlinks (if any)
+# remove all files except for identity files (for future convenience)
+find ${ZT_HOMEDIR} -type f ! -name 'identity.*' -delete
+rm -rf ${ZT_HOMEDIR}/controller.d
+rm -rf ${ZT_HOMEDIR}/iddb.d
+rm -rf ${ZT_HOMEDIR}/networks.d
 echo "$(date) UNINSTALL: removing old symlinks" >> /opt/var/log/zerotier-one.log ;
-rm -f /usr/sbin/zerotier-one
-rm -f /usr/sbin/zerotier-cli
-rm -f /usr/sbin/zerotier-idtool
-
-rm -f /usr/bin/zerotier-one
-rm -f /usr/bin/zerotier-cli
-rm -f /usr/bin/zerotier-idtool
-
-rm -f /usr/local/sbin/zerotier-one
-rm -f /usr/local/sbin/zerotier-cli
-rm -f /usr/local/sbin/zerotier-idtool
-
-rm -f /usr/local/bin/zerotier-one
-rm -f /usr/local/bin/zerotier-cli
-rm -f /usr/local/bin/zerotier-idtool
-
-rm -f /var/lib/zerotier-one/zerotier-one
-rm -f /var/lib/zerotier-one/zerotier-cli
-rm -f /var/lib/zerotier-one/zerotier-idtool
-
+rm -f ${INSTALL_DIR}
 # nginx de-config
 echo "$(date) UNINSTALL: removing nginx reverse proxy config" >> /opt/var/log/zerotier-one.log ;
-rm -rf /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
-
+rm -f /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
+# remove control scrip
+rm -f /etc/init.d/zerotier
 # TODO: check devicemap and remove all ls /etc/sysconfig/network-scripts entries
 
 exit 0

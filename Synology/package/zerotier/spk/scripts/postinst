@@ -1,57 +1,20 @@
 #!/bin/sh
 
-ZT_HOME_DIR="/var/lib/zerotier-one"
+INSTALL_DIR="/usr/local/${PACKAGE}"
 echo "$(date) INSTALL: Unpacked to: " ${SYNOPKG_PKGDEST} >> /opt/var/log/zerotier-one.log ;
+echo "$(date) INSTALL: INSTALL_DIR=" ${INSTALL_DIR} >> /opt/var/log/zerotier-one.log ;
 
-# select appropriate binary
-mtype=$(uname -m)
-if [ ${mtype} == 'x86_64' ];
-	then
-		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.x86_64 ${SYNOPKG_PKGDEST}/bin/zerotier-one
-elif [[ ${mtype} == 'i386' ]] || [[ ${mtype} == 'i486' ]] || [[ ${mtype} == 'i586' ]] || [[ ${mtype} == 'i686' ]];
-	then
-		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.x86 ${SYNOPKG_PKGDEST}/bin/zerotier-one
-elif [[ ${mtype} == 'armv5tel' ]]
-	then 
-		mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armv5tel ${SYNOPKG_PKGDEST}/bin/zerotier-one
-else
-        mv ${SYNOPKG_PKGDEST}/bin/zerotier-one.armhf ${SYNOPKG_PKGDEST}/bin/zerotier-one
-fi
-
-# set permissions
-echo "$(date) INSTALL: setting permissions" >> /opt/var/log/zerotier-one.log ;
+# make installation and config dirs
+mkdir -p ${INSTALL_DIR}/bin
+mkdir -p /var/lib/zerotier-one
+# remove old device map file if it exists
+rm -rf {INSTALL_DIR}/devicemap
+# link to binaries
 chmod 755 ${SYNOPKG_PKGDEST}/bin/zerotier-one
-
-# create (and possibly clean out home dir)
-echo "$(date) INSTALL: removing old /var/lib/zerotier-one files" >> /opt/var/log/zerotier-one.log ;
-mkdir -p ${ZT_HOME_DIR}
-rm -rf /var/lib/zerotier-one/devicemap
-
-# create new symlinks (put them in all the places!)
-echo "$(date) INSTALL: creating new symlinks" >> /opt/var/log/zerotier-one.log ;
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/sbin/zerotier-one
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/sbin/zerotier-cli
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/sbin/zerotier-idtool
-
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/bin/zerotier-one
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/bin/zerotier-cli
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/bin/zerotier-idtool
-
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/sbin/zerotier-one
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/sbin/zerotier-cli
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/sbin/zerotier-idtool
-
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/bin/zerotier-one
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/bin/zerotier-cli
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/bin/zerotier-idtool
-
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /var/lib/zerotier-one/zerotier-one
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /var/lib/zerotier-one/zerotier-cli
-ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /var/lib/zerotier-one/zerotier-idtool
-
-# put a copy of the watchdog script in the home dir
-echo "$(date) INSTALL: adding watchdog script to /var/lib/zerotier-one" >> /opt/var/log/zerotier-one.log ;
-cp -f ${SYNOPKG_PKGDEST}/bin/ztui_watchdog.sh ${ZT_HOME_DIR}/ztui_watchdog.sh
+ln -s ${SYNOPKG_PKGDEST} ${INSTALL_DIR}
+# install control script
+cp ${SYNOPKG_PKGDEST}/bin/start-stop-status /etc/init.d/zerotier
+chmod 755 /etc/init.d/zerotier
 
 # nginx proxy config
 echo "$(date) INSTALL: setting nginx reverse proxy config" >> /opt/var/log/zerotier-one.log ;
