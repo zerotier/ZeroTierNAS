@@ -217,7 +217,7 @@ var ZeroTierNode = React.createClass({
 	},
 	componentDidMount: function() {
 		this.updateAll();
-		this.updateIntervalId = setInterval(this.updateAll,2500);
+		this.updateIntervalId = setInterval(this.updateAll,1000);
 	},
 	componentWillUnmount: function() {
 		clearInterval(this.updateIntervalId);
