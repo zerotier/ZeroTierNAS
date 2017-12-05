@@ -5,10 +5,10 @@
 
 # Run this script from the same directory as build.sh in the Synology folder
 
-CROSSDIR='/media/psf/Home/op/zt/zerotier'
+CROSSDIR='CrossCompiledBinaries'
 DSM_VERSION='6.1'
 ZT_VERSION='1.2.4'
-OUTPUT_DIR='/media/psf/Home/op/zt/ZeroTierNAS/Synology/FinishedPackages'
+OUTPUT_DIR='FinishedPackages'
 
 mkdir -p ${OUTPUT_DIR}
 
