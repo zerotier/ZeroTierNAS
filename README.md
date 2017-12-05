@@ -33,29 +33,29 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
 
 | Architecture | Download |
 | --- | --- |
-| Intel x64  | [zerotier-synology-x64.spk](https://download.zerotier.com/dist/zerotier-synology-x64.spk?pk_campaign=github_zerotiernas) |
-| Intel x86  | [zerotier-synology-x86.spk](https://download.zerotier.com/dist/zerotier-synology-x86.spk?pk_campaign=github_zerotiernas) |
-| Marvell 88f6281  | [zerotier-synology-88f6281.spk](https://download.zerotier.com/dist/zerotier-synology-88f6281.spk?pk_campaign=github_zerotiernas) |
-| Marvell Armada 370  | [zerotier-synology-armada370.spk](https://download.zerotier.com/dist/zerotier-synology-armada370.spk?pk_campaign=github_zerotiernas) |
-| Marvell Armada 375  | [zerotier-synology-armada375.spk](https://download.zerotier.com/dist/zerotier-synology-armada375.spk?pk_campaign=github_zerotiernas) |
-| Marvell Armada 38x  | [zerotier-synology-armada38x.spk](https://download.zerotier.com/dist/zerotier-synology-armada38x.spk?pk_campaign=github_zerotiernas) |
-| Marvell Armada XP  | [zerotier-synology-armadaxp.spk](https://download.zerotier.com/dist/zerotier-synology-armadaxp.spk?pk_campaign=github_zerotiernas) |
-| Intel Apollo Lake  | [zerotier-synology-apollolake.spk](https://download.zerotier.com/dist/zerotier-synology-apollolake.spk?pk_campaign=github_zerotiernas) |
-| Intel Avoton  | [zerotier-synology-avoton.spk](https://download.zerotier.com/dist/zerotier-synology-avoton.spk?pk_campaign=github_zerotiernas) |
-| Intel Braswell  | [zerotier-synology-braswell.spk](https://download.zerotier.com/dist/zerotier-synology-braswell.spk?pk_campaign=github_zerotiernas) |
-| Intel Broadwell  | [zerotier-synology-broadwell.spk](https://download.zerotier.com/dist/zerotier-synology-broadwell.spk?pk_campaign=github_zerotiernas) |
-| Intel Bromolow  | [zerotier-synology-bromolow.spk](https://download.zerotier.com/dist/zerotier-synology-bromolow.spk?pk_campaign=github_zerotiernas) |
-| Intel Cedarview  | [zerotier-synology-cedarview.spk](https://download.zerotier.com/dist/zerotier-synology-cedarview.spk?pk_campaign=github_zerotiernas) |
-| Intel Denverton  | [zerotier-synology-denverton.spk](https://download.zerotier.com/dist/zerotier-synology-denverton.spk?pk_campaign=github_zerotiernas) |
-| Intel Evansport  | [zerotier-synology-evansport.spk](https://download.zerotier.com/dist/zerotier-synology-evansport.spk?pk_campaign=github_zerotiernas) |
-| Intel Grantley  | [zerotier-synology-grantley.spk](https://download.zerotier.com/dist/zerotier-synology-grantley.spk?pk_campaign=github_zerotiernas) |
-| Mindspeed Comcerto2k  | [zerotier-synology-comcerto2k.spk](https://download.zerotier.com/dist/zerotier-synology-comcerto2k.spk?pk_campaign=github_zerotiernas) |
-| Annapurna Labs Alpine   | [zerotier-synology-alpine.spk](https://download.zerotier.com/dist/zerotier-synology-alpine.spk?pk_campaign=github_zerotiernas) |
-| hi3535  | [zerotier-synology-hi3535.spk](https://download.zerotier.com/dist/zerotier-synology-hi3535.spk?pk_campaign=github_zerotiernas) |
-| STM STiH412 Monaco  | [zerotier-synology-monaco.spk](https://download.zerotier.com/dist/zerotier-synology-monaco.spk?pk_campaign=github_zerotiernas) |
-| powerpc  | [zerotier-synology-powerpc.spk](https://download.zerotier.com/dist/zerotier-synology-powerpc.spk?pk_campaign=github_zerotiernas) |
-| qoriq  | [zerotier-synology-qoriq.spk](https://download.zerotier.com/dist/zerotier-synology-qoriq.spk?pk_campaign=github_zerotiernas) |
-| Realtek RTD1296  | [zerotier-synology-rtd1296.spk](https://download.zerotier.com/dist/zerotier-synology-rtd1296.spk?pk_campaign=github_zerotiernas) |
+| Intel x64  | [zerotier-1.2.4-syn-x64-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-x64-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel x86  | [zerotier-1.2.4-syn-x86-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-x86-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell 88f6281  | [zerotier-1.2.4-syn-88f6281-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-88f6281-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell Armada 370  | [zerotier-1.2.4-syn-armada370.-6.1spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada370-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell Armada 375  | [zerotier-1.2.4-syn-armada375-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada375-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell Armada 38x  | [zerotier-1.2.4-syn-armada38x-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada38x-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell Armada XP  | [zerotier-1.2.4-syn-armadaxp-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armadaxp-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Apollo Lake  | [zerotier-1.2.4-syn-apollolake-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-apollolake-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Avoton  | [zerotier-1.2.4-syn-avoton-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-avoton-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Braswell  | [zerotier-1.2.4-syn-braswell-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-braswell-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Broadwell  | [zerotier-1.2.4-syn-broadwell-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-broadwell-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Bromolow  | [zerotier-1.2.4-syn-bromolow-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-bromolow-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Cedarview  | [zerotier-1.2.4-syn-cedarview-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-cedarview-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Denverton  | [zerotier-1.2.4-syn-denverton-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-denverton-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Evansport  | [zerotier-1.2.4-syn-evansport-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-evansport-6.1.spk?pk_campaign=github_zerotiernas) |
+| Intel Grantley  | [zerotier-1.2.4-syn-grantley-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-grantley-6.1.spk?pk_campaign=github_zerotiernas) |
+| Mindspeed Comcerto2k  | [zerotier-1.2.4-syn-comcerto2k-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-comcerto2k-6.1.spk?pk_campaign=github_zerotiernas) |
+| Annapurna Labs Alpine   | [zerotier-1.2.4-syn-alpine-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-alpine-6.1.spk?pk_campaign=github_zerotiernas) |
+| hi3535  | [zerotier-1.2.4-syn-hi3535-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-hi3535-6.1.spk?pk_campaign=github_zerotiernas) |
+| STM STiH412 Monaco  | [zerotier-1.2.4-syn-monaco-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-monaco-6.1.spk?pk_campaign=github_zerotiernas) |
+| powerpc  | [zerotier-1.2.4-syn-powerpc-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-powerpc-6.1.spk?pk_campaign=github_zerotiernas) |
+| qoriq  | [zerotier-1.2.4-syn-qoriq-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-qoriq-6.1.spk?pk_campaign=github_zerotiernas) |
+| Realtek RTD1293 / RTD1296  | [zerotier-1.2.4-syn-rtd129x-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-rtd129x-6.1.spk?pk_campaign=github_zerotiernas) |
 ***
 
 ### WD
