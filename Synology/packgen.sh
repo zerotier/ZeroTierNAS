@@ -5,10 +5,10 @@
 
 # Run this script from the same directory as build.sh in the Synology folder
 
-CROSSDIR='CrossCompiledBinaries'
+CROSSDIR='../../cross-compiled-binaries'
 DSM_VERSION='6.1'
 ZT_VERSION='1.2.4'
-OUTPUT_DIR='FinishedPackages'
+OUTPUT_DIR='../../finished-packages'
 
 mkdir -p ${OUTPUT_DIR}
 

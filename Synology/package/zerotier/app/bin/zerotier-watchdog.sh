@@ -1,15 +1,13 @@
 #!/bin/bash
+
 CURRENT_PATH=$(pwd)
+PIDFOLDER="/var/lib/zerotier-one"
+WATCHDOGPIDFILE=$PIDFOLDER"/watchdog.pid"
+LOG_FILE="/var/log/zerotier-one.log"
+ZEROTIER="/usr/local/zerotier/bin/zerotier-one"
 
-LOGFOLDER=$CURRENT_PATH"/logs/"
-PIDFOLDER=$CURRENT_PATH"/pid/"
-
-#PID file where the this script process ID is stored
-WATCHDOGPIDFILE=$PIDFOLDER"watchdog-admin.pid"
-#Watchdog process error log file
-WATCHDOGLOGFILE=$LOGFOLDER"admin-watchdog-error.log"
-
-ARG_1=$1
+ZT_HOME_DIR="/var/lib/zerotier-one"
+PID_FILE="${ZT_HOME_DIR}/zerotier-one.pid"
 
 start() {
     echo "starting"
@@ -26,7 +24,7 @@ stopdaemon() {
 }
 
 log() {
-    echo $1 >> $WATCHDOGLOGFILE
+    echo "$(date)" $1 >> ${LOG_FILE}
 }
 
 keep_alive() {
@@ -35,7 +33,7 @@ keep_alive() {
         if [ $(ps -o pid | grep $PID) ]; then
             return;
         else
-            log "Jim, he is dead!! Trying ressurection spell..."
+            log "Dead. Trying to restart"
             start
         fi
     else
@@ -43,15 +41,25 @@ keep_alive() {
     fi
 }
 
-case x${ARG_1} in
-    x-start )
+daemon_status ()
+{
+    PID=$(cat ${PID_FILE})
+    if [ -f ${PID_FILE} ] && ps -p ${PID} > /dev/null ; then 
+        return 0
+    else
+        rm -f ${PID_FILE}
+        return 1
+    fi
+}
 
-        echo "Starting daemon watchdog"
-        nohup "$0" -daemon &> /dev/null &
+case "$1" in
+    start )
+        log "Starting daemon watchdog (to protect /dev/net/tun)"
+        nohup "$0" daemon &> /dev/null &
 
     ;;
 
-    x-daemon )
+    daemon )
         if [ -e $WATCHDOGPIDFILE ]; then
             PID=$(cat $WATCHDOGPIDFILE)
             if [ $(ps -o pid | grep $PID) ]; then
@@ -69,8 +77,13 @@ case x${ARG_1} in
         start
 
         while true; do
-            keep_alive
-            # wait
+            
+            if daemon_status; then
+                :
+            else
+                ${ZEROTIER} -d ;
+            fi
+
             sleep 1
 
             # Check that tun module is loaded
@@ -93,25 +106,25 @@ case x${ARG_1} in
                 fi
 
                 # also restart zerotier
-                killall zerotier-one
+                pkill -f zerotier-one
                 sleep 1
-                /usr/sbin/zerotier-one -d
+                ${ZEROTIER} -d
             fi
         done
     ;;
 
-    x-stop )
+    stop )
 
-        echo "Stopping daemon watchdog"
+        log "Stopping daemon watchdog"
         PID=$(cat $WATCHDOGPIDFILE)
         kill $PID
 
     ;;
 
-    x-status )
+    status )
         #check if process is running and PID file exists, and report it back
     ;;
-    x )
+    * )
         echo "Usage {start|stop|status}"
 esac
 

@@ -1,4 +1,4 @@
-var ZeroTierNode = React.createClass({
+var ZeroTierNode = React.createClass({displayName: "ZeroTierNode",
 	getInitialState: function() {
 		
 		// get local address (of NAS) for ZT UI server and auth functions
@@ -224,29 +224,29 @@ var ZeroTierNode = React.createClass({
 	},
 	render: function() {
 		return (
-			<div className="zeroTierNode">
-				<div className="middle"><div className="middleCell">
-					<div className="middleScroll">
-						<div className="networks" key="_networks">
-							{
+			React.createElement("div", {className: "zeroTierNode"}, 
+				React.createElement("div", {className: "middle"}, React.createElement("div", {className: "middleCell"}, 
+					React.createElement("div", {className: "middleScroll"}, 
+						React.createElement("div", {className: "networks", key: "_networks"}, 
+							
 								this.state._networks.map(function(network) {
 									network['onNetworkDeleted'] = this.handleNetworkDelete;
 									return React.createElement('div',{className: 'network',key: network.nwid},React.createElement(ZeroTierNetwork,network));
 								}.bind(this))
-							}
-						</div>
-					</div>
-				</div></div>
-				<div className="bottom">
-					<div className="left">
-						<span className="statusLine"><span className="zeroTierAddress">{this.state.address}</span>&nbsp;&nbsp;{this.state.online ? (this.state.tcpFallbackActive ? 'TUNNELED' : 'ONLINE') : 'OFFLINE'}&nbsp;&nbsp;{this.state.version}</span>
-					</div>
-					<div className="right">
-						<form onSubmit={this.joinNetwork}><input type="text" maxlength="16" placeholder="[ Network ID ]" onChange={this.handleNetworkIdEntry} size="16"/>
-							<button type="button" onClick={this.joinNetwork}>Join</button></form>
-					</div>
-				</div>
-			</div>
+							
+						)
+					)
+				)), 
+				React.createElement("div", {className: "bottom"}, 
+					React.createElement("div", {className: "left"}, 
+						React.createElement("span", {className: "statusLine"}, React.createElement("span", {className: "zeroTierAddress"}, this.state.address), "  ", this.state.online ? (this.state.tcpFallbackActive ? 'TUNNELED' : 'ONLINE') : 'OFFLINE', "  ", this.state.version)
+					), 
+					React.createElement("div", {className: "right"}, 
+						React.createElement("form", {onSubmit: this.joinNetwork}, React.createElement("input", {type: "text", maxlength: "16", placeholder: "[ Network ID ]", onChange: this.handleNetworkIdEntry, size: "16"}), 
+							React.createElement("button", {type: "button", onClick: this.joinNetwork}, "Join"))
+					)
+				)
+			)
 		);
 	}
 });

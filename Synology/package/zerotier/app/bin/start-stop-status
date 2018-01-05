@@ -5,23 +5,25 @@ PACKAGE="zerotier"
 INSTALL_DIR="/usr/local/${PACKAGE}"
 ZT_HOME_DIR="/var/lib/zerotier-one"
 ZEROTIER="${INSTALL_DIR}/bin/zerotier-one"
-WATCHDOG="${INSTALL_DIR}/bin/ztui_watchdog.sh"
+WATCHDOG="${INSTALL_DIR}/bin/zerotier-watchdog.sh"
 PID_FILE="${ZT_HOME_DIR}/zerotier-one.pid"
+LOG_FILE="/var/log/zerotier-one.log"
 
 start_daemon ()
 {
+    ${WATCHDOG} stop ;
+    ${WATCHDOG} start ;
+    sleep 1
+    echo "starting" ${ZEROTIER} >> ${LOG_FILE}
     ${ZEROTIER} -d ;
     echo $! >> ${PID_FILE}
-    ${WATCHDOG} -start ;
-    echo "$(date) Started ZeroTier" >> /opt/var/log/zerotier-one.log ;
 }
 
 stop_daemon ()
 {
     kill `cat ${PID_FILE}`
-    #wait_for_status 1 20 || kill -9 `cat ${PID_FILE}`
     rm -f ${PID_FILE}
-    pkill -f "ztui_watchdog" ;
+    ${WATCHDOG} stop ;
 }
 
 daemon_status ()
@@ -52,16 +54,18 @@ case "$1" in
     if daemon_status; then 
         echo "${DNAME} is already running"
     else
-        echo "$(date) Starting ${DNAME} ... " >> /opt/var/log/zerotier-one.log
-        echo "Starting ${DNAME} ... " ;
+        echo "$(date) Starting ${DNAME} " >> ${LOG_FILE}
+        echo "Starting ${DNAME} " ;
         start_daemon
+        echo "$(date) Started ZeroTier" >> ${LOG_FILE} ;
     fi
     ;;
   stop)
     if daemon_status; then
-        echo "$(date) Stopping ${DNAME}" >> /opt/var/log/zerotier-one.log
+        echo "$(date) Stopping ${DNAME}" >> ${LOG_FILE}
         echo "Stopping ${DNAME}"
         stop_daemon
+        echo "$(date) Stopped ZeroTier" >> ${LOG_FILE} ;
     else
         echo "${DNAME} is not running" ;
     fi
