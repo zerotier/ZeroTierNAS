@@ -9,9 +9,9 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
 **Got a question or feature request?** Join us on [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 ***
 
-[QNAP](QNAP/README.md)
-[Synology](Synology/README.md)
-[Netgear ReadyNAS](https://github.com/NAStools/zerotierone)
-[Western Digital](WD/README.md)
+ - [QNAP](QNAP/README.md)
+ - [Synology](Synology/README.md)
+ - [Netgear ReadyNAS](https://github.com/NAStools/zerotierone)
+ - [Western Digital](WD/README.md)
 
 
