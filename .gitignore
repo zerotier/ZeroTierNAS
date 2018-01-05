@@ -10,3 +10,6 @@ build/tmp
 build/docs
 build/dependency-cache
 build/classes
+
+Synology/finished-packages/
+Synology/cross-compiled-binaries/
