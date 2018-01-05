@@ -13,3 +13,4 @@ build/classes
 
 Synology/finished-packages/
 Synology/cross-compiled-binaries/
+node_modules
