@@ -1,4 +1,5 @@
 *.DS_Store
+*.tar.gz
 package/zerotier/gpg/*.gpg
 package/zerotier-headless/gpg/*.gpg
 package/zerotier-mod/gpg/*.gpg
@@ -13,4 +14,6 @@ build/classes
 
 Synology/finished-packages/
 Synology/cross-compiled-binaries/
+
 node_modules
+.module-cache
