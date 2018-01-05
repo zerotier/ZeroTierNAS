@@ -3,7 +3,7 @@ Using Debian, Docker, spksrc, and the Synology toolchains
 *Note: To build for `armv5te`, check the bottom of this document*
 ***
 
-## Cross-Compilation
+## Step 1: Cross-Compilation
 
 In this section we will build the `zerotier-one` binary for every architecture offered by Synology.
 
@@ -138,10 +138,10 @@ include ../../mk/spksrc.spk.mk
 
 .PHONY: transmission_extra_install
 transmission_extra_install:
-	install -m 755 -d $(STAGING_DIR)/var
-	install -m 644 src/settings.json $(STAGING_DIR)/var/settings.json
-	install -m 755 -d $(STAGING_DIR)/app
-	install -m 644 src/app/config $(STAGING_DIR)/app/config
+  install -m 755 -d $(STAGING_DIR)/var
+  install -m 644 src/settings.json $(STAGING_DIR)/var/settings.json
+  install -m 755 -d $(STAGING_DIR)/app
+  install -m 644 src/app/config $(STAGING_DIR)/app/config
 ```
 
 
@@ -193,7 +193,7 @@ bin:bin/zerotier-idtool
 
 
 
-## ARMv5TE based models
+## Step 1 (alternative): ARMv5TE based models
 
 This category is separate because ZeroTier currently requires certin C++11 features that are not available in Synology's official toolchains targeting DSM 5.2. For this reason we employ a different build process for the binary. The process for building the package will remain the same however and will be detailed below this section.
 
@@ -277,25 +277,18 @@ Build ZeroTier:
 
 The resultant binary `zerotier-one` can now be used in the Synology package building process.
 
-
 ***
 
 
 
 
 
+## Step 2: Building the DSM Package
 
+Here we package the `zerotier-one` binary into a DSM-compatible archive for installation.
 
+### Set up the environment to build a package:
 
-## Building the Package
-
-Here 
-
-### Setting up the environment to build a package:
-
- - Build ZeroTier binaries for your target architecture: `make ZT_SYNOLOGY=1` [ZeroTier](https://github.com/zerotier/ZeroTierOne)
- - Place binary(ies) in `package/zerotier/app/bin`
- - Name binaries to reflect arch: (e.g. `zerotier-one.x86_64` or `zerotier-one.armv7`)
  - Install Apache Ant
  - Fetch dependencies:
 
@@ -316,36 +309,13 @@ After successful generation, the key will be placed in `~/.gnupg/`
 To verify the key generation was successful: `gpg -K`, use the key id outputted from this in the `build.xml` file.
 If successful, copy it into the `package/zerotier/gpg` folder and then build:
 
- - Build package:
- ```
- ./package/zerotier/build.sh
- ```
+### Build
 
-### Entware-ng
- - Alterntively without a GUI, an official ZeroTier package exists for Entware-ng under the name `zerotier`
- - Follow these instructions to install Entware-ng on your Synology NAS: https://github.com/Entware-ng/Entware-ng/wiki/Install-on-Synology-NAS
- - `opkg install zerotier`
- - Modify `package/zerotier/spk/scripts/start-stop-status.sh` script to start and stop ZeroTier. Entware will likely install ZeroTier to `/volumeX/@entware-ng/opt/usr/sbin/`
-***
-
-*
-Side notes:
- - If required, additional installation instructions can be found here: http://ant.apache.org/manual/install.html
- - If installing Ant from a repo it might not include `fetch.xml` or `get-m2.xml`, copy these into your `$ANT_HOME` manually.
-*
-
-
-
-
-
-
-
-## Building the package (the old and reliable way)
  - Place `zerotier-one` binary in `ZeroTierNAS/Synology/package/zerotier/app/bin`
  - From `ZeroTierNAS/Synology/package/zerotier`, run `./build.sh`
  - Resultant package will be placed in `ZeroTierNAS/Synology/package/zerotier/dist`
 
-## Internal Process for Building all Varieties of Synology Packages
+### Internal Semi-Automated Process for Building all Varieties of Synology Packages
 
  - Cross-compile to desired targets
   - Enter repo container: `docker run -it -v ~/spksrc:/spksrc synocommunity/spksrc /bin/bash`
@@ -362,7 +332,14 @@ Side notes:
   - Update text and version info in: `ZeroTierNAS/Synology/package/zerotier/build.xml`
   - Run `./../../packgen.sh`
 
-## Running the ZeroTier Package
+***
+
+
+
+
+## Usage
+
+### Controlling the service
 
  - Start: `synoservice --start pkgctl-zerotier`
  - Stop: `synoservice --stop pkgctl-zerotier`
@@ -371,3 +348,27 @@ Side notes:
 
  Logs are stored in: `/var/log/zerotier-one.log`
 
+### Using the service
+
+```
+Usage: zerotier-cli [-switches] <command/path> [<args>]
+
+Available switches:
+  -h                      - Display this help
+  -v                      - Show version
+  -j                      - Display full raw JSON output
+  -D<path>                - ZeroTier home path for parameter auto-detect
+  -p<port>                - HTTP port (default: auto)
+  -T<token>               - Authentication token (default: auto)
+
+Available commands:
+  info                    - Display status info
+  listpeers               - List all peers
+  listnetworks            - List all networks
+  join <network>          - Join a network
+  leave <network>         - Leave a network
+  set <network> <setting> - Set a network setting
+  listmoons               - List moons (federated root sets)
+  orbit <world ID> <seed> - Join a moon via any member root
+  deorbit <world ID>      - Leave a moon
+```

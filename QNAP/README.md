@@ -7,34 +7,13 @@ ZeroTier for QNAP
 
 ***
 
-#### Tested on:
+ - For 32-bit `QNAP` devices, download [ZeroTier_1.2.4_x86.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86.qpkg?pk_campaign=github_zerotiernas)
 
- - [TS-251+](https://www.qnap.com/en-us/product/model.php?II=195)
+| Model | CPU | Supported | Download | Notes |
+| --- | --- | --- | --- | --- |
+| TS-251  | Intel Atom    | YES                               | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg?pk_campaign=github_zerotiernas) | No GUI |
+| TS-453A | Intel Celeron | PENDING                           | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg?pk_campaign=github_zerotiernas) | No GUI |
+| TS-869L | Intel Atom    | YES [requires QVPN service](http://docs.qnap.com/nas/4.3/cat2/en/index.html?qvpn.htm)       | [ZeroTier_1.2.4_x86_64.qpkg](https://download.zerotier.com/dist/ZeroTier_1.2.4_x86_64.qpkg?pk_campaign=github_zerotiernas) | No GUI |
 
-#### Package Build Instructions:
 
- - Clone this repo and [ZeroTierOne](https://github.com/zerotier/ZeroTierOne/tree/master)
- 
- - In [ZeroTierOne](https://github.com/zerotier/ZeroTierOne/tree/master) repo, `make one ZT_QNAP=1`
- 
- - Copy resultant `zerotier-one` into appropriate platform folder `QNAP/x86`, `QNAP/x86_64`, etc.
- 
- - `tar -cvf qnap.tar`
-
- - On the QNAP system, install the [QDK](http://download.qnap.com/Storage/Utility/QDK_2.2.4.zip)
- 
- - Go to dev directory defined by: `getcfg QDK Install_Path -f /etc/config/qpkg.conf` 
-
- - Copy previously mentioned `qnap.tar` to your QNAP system and untar it in the dev directory under `ZeroTier`
-
- - On QNAP System, enter `ZeroTier` directory and run `qbuild`
-
- - Tar up the result and send it back to your dev system.
-
- #### For developers:
-
- Toolchains:
-
-  - [x86](https://sourceforge.net/projects/qosgpl/files/QNAP%20NAS%20Tool%20Chains/)
-  
-  - [Marvell](https://sourceforge.net/projects/qosgpl/files/QNAP%20NAS%20Tool%20Chains/)
+If for some reason you want to build your own ZeroTier package, we've included the instructions [here](BUILD.md)
