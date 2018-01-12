@@ -21,37 +21,37 @@ start_daemon ()
 
 stop_daemon ()
 {
-    kill `cat ${PID_FILE}`
-    rm -f ${PID_FILE}
     ${WATCHDOG} stop ;
+    pkill zerotier-one
+    #rm -f ${PID_FILE}
 }
 
-daemon_status ()
-{
-    PID=$(cat ${PID_FILE})
-    if [ -f ${PID_FILE} ] && ps -p ${PID} > /dev/null ; then 
-        return 0
-    else
-        rm -f ${PID_FILE}
-        return 1
-    fi
-}
+#daemon_status ()
+#{
+#    PID=$(cat ${PID_FILE})
+#    if [ -f ${PID_FILE} ] && ps -p ${PID} > /dev/null ; then 
+#        return 0
+#    else
+#        rm -f ${PID_FILE}
+#        return 1
+#    fi
+#}
 
-wait_for_status ()
-{
-    counter=$2
-    while [ ${counter} -gt 0 ]; do
-        daemon_status
-        [ $? -eq $1 ] && return
-        let counter=counter-1
-        sleep 1
-    done
-    return 1
-}
+#wait_for_status ()
+#{
+#    counter=$2
+#    while [ ${counter} -gt 0 ]; do
+#        daemon_status
+#        [ $? -eq $1 ] && return
+#        let counter=counter-1
+#        sleep 1
+#    done
+#    return 1
+#}
 
 case "$1" in
   start)
-    if daemon_status; then 
+    if ( pidof zerotier-one ); then 
         echo "${DNAME} is already running"
     else
         echo "$(date) Starting ${DNAME} " >> ${LOG_FILE}
@@ -61,7 +61,7 @@ case "$1" in
     fi
     ;;
   stop)
-    if daemon_status; then
+    if ( pidof zerotier-one ); then
         echo "$(date) Stopping ${DNAME}" >> ${LOG_FILE}
         echo "Stopping ${DNAME}"
         stop_daemon
@@ -71,7 +71,7 @@ case "$1" in
     fi
     ;;
   status)
-    if daemon_status; then
+    if ( pidof zerotier-one ); then
         echo "${DNAME} is running."
         exit 0
     else 

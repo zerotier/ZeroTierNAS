@@ -14,12 +14,11 @@ rm -rf {INSTALL_DIR}/devicemap
 # link to binaries
 echo "$(date) INSTALL: creating symlinks from ${SYNOPKG_PKGDEST} to ${INSTALL_DIR} and ${INSTALL_DIR}/bin" >> ${LOG_FILE} ;
 chmod 755 ${SYNOPKG_PKGDEST}/bin/zerotier-one
+chmod 755 ${SYNOPKG_PKGDEST}/bin/start-stop-status
 ln -s ${SYNOPKG_PKGDEST} ${INSTALL_DIR}
 ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/bin/zerotier-cli		
 ln -s ${SYNOPKG_PKGDEST}/bin/zerotier-one /usr/local/bin/zerotier-idtool
 # install control script
-#cp ${SYNOPKG_PKGDEST}/bin/start-stop-status /etc/init.d/zerotier
-#chmod 755 /etc/init.d/zerotier
 
 # nginx proxy config
 echo "$(date) INSTALL: setting nginx reverse proxy config" >> ${LOG_FILE} ;

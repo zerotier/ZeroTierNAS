@@ -10,13 +10,13 @@ DSM_VERSION='6.1'
 ZT_VERSION='1.2.4'
 OUTPUT_DIR='../../finished-packages'
 
+rm -rf ${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}
 
 for dir in $(ls ${CROSSDIR})
 do
 	dir=${dir%*/}
 	if [[ $dir == *${DSM_VERSION} ]]; then
-    	#echo ${dir##*/}
     	PACKAGE_ARCH="${dir#work-}"
     	echo ${PACKAGE_ARCH}
 
@@ -30,7 +30,7 @@ do
     		# make the package
     		./build.sh
     		# remove the binary to prevent mixups
-    		rm -f ${ZT_BINARY} app/bin
+    		rm -f app/bin/${ZT_BINARY}
     		cp dist/zerotier-${ZT_VERSION}-noarch.spk ${OUTPUT_DIR}/zerotier-${ZT_VERSION}-syn-${PACKAGE_ARCH}.spk
     	else
     		echo "File does not exist. Not building."
