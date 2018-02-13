@@ -3,8 +3,6 @@ ZeroTier for Synology
 
 [![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
 
-**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
-
 ***
 
 Due to the varied nature of the Synology NAS lineup it is difficult to ensure complete functional coverage. We do offer packages for most models but some have unique quirks. In most cases the `zerotier-cli` command line interface is the recommended method for using ZeroTier, there is a react-based GUI included but is known to be somewhat buggy. We officially only support the latest version of DSM. But if you need something for an older device we can assist in creating one for you.
