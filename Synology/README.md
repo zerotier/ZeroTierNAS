@@ -10,13 +10,13 @@ Recent Updates:
 | Date | Version | Description |
 | --- | --- | --- |
 | TBA | 1.2.6r0 | Update of ZeroTier core service |
-| 2018-01-11 | 1.2.4 | Fixed status indicator for all packages. Fixed need for manually starting service after device restart |
+| 2018-01-11 | [1.2.4](https://download.zerotier.com/RELEASES/1.2.4/dist/) | Fixed status indicator for all packages. Fixed need for manually starting service after device restart |
 
 Note:
 
  - Synology QuickConnect is known to prevent the package GUI from working. We advise that you connect directly while administering your device.
 
- - After version 1.2.4 we will begin versioning the individual builds of out synology packages: `1.2.6r0`, `1.2.6r1`, etc.
+ - After version 1.2.4 we will begin versioning the individual builds of out synology packages: `1.2.6r0`, `1.2.6r1`, etc. A list of all previous versions will be available [here](https://download.zerotier.com/RELEASES/)
 
 ```
 Usage: zerotier-cli [-switches] <command/path> [<args>]
