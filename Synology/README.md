@@ -5,7 +5,18 @@ ZeroTier for Synology
 
 ***
 
-Due to the varied nature of the Synology NAS lineup it is difficult to ensure complete functional coverage. We do offer packages for most models but some have unique quirks. In most cases the `zerotier-cli` command line interface is the recommended method for using ZeroTier, there is a react-based GUI included but is known to be somewhat buggy. We officially only support the latest version of DSM. But if you need something for an older device we can assist in creating one for you.
+Recent Updates:
+
+| Date | Version | Description |
+| --- | --- | --- |
+| TBA | 1.2.6r0 | Update of ZeroTier core service |
+| 2018-01-11 | 1.2.4 | Fixed status indicator for all packages. Fixed need for manually starting service after device restart |
+
+Note:
+
+ - Synology QuickConnect is known to prevent the package GUI from working. We advise that you connect directly while administering your device.
+
+ - After version 1.2.4 we will begin versioning the individual builds of out synology packages: `1.2.6r0`, `1.2.6r1`, etc.
 
 ```
 Usage: zerotier-cli [-switches] <command/path> [<args>]
