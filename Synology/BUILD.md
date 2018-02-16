@@ -185,7 +185,15 @@ bin:bin/zerotier-cli
 bin:bin/zerotier-idtool
 ```
 
- - Disable th call to configure in `unknown_file:50`
+The last few steps... Comment out:
+
+`$(RUN) ./configure $(REAL_CONFIGURE_ARGS)` from `mk/spksrc.configure.mk`
+
+Make:
+
+`make all-archs`
+
+Disable th call to configure in `unknown_file:50`
 
 ***
 
@@ -290,6 +298,11 @@ Here we package the `zerotier-one` binary into a DSM-compatible archive for inst
 ### Set up the environment to build a package:
 
  - Install Apache Ant
+
+   locate a copy of `/usr/share/ant/fetch.xml`
+   locate a copy of  `/usr/share/ant/get-m2.xml`
+   locate a copy of  `/usr/share/ant/ivy-2.4.0.jar`
+
  - Fetch dependencies:
 
 ```
