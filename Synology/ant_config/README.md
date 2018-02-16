@@ -1,1 +1,0 @@
-copy contents to ANT_HOME
