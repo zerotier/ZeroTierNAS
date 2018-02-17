@@ -23,12 +23,9 @@
 
 			<package dir="app" includes="**/*.sh" filemode="755" />
 			<package dir="app" excludes="**/*.sh" />
-
-			<codesign keyid="6F6D614D" secring="gpg/secring.gpg" password="" />
 		</syno:spk>
 
 		<syno:package-source file="dist/spksrc.json">
-			<keyring file="gpg/alice.pub" />
 			<spk file="dist/${package}-${version}-noarch.spk">
 				<info name="link" value="http://packages.example.org/${package}-${version}-noarch.spk" />
 				<thumbnail url="http://images.example.org/${package}/thumbnail.png" />

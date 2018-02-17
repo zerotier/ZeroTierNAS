@@ -297,23 +297,20 @@ Here we package the `zerotier-one` binary into a DSM-compatible archive for inst
 
 ### Set up the environment to build a package:
 
- - Install Apache Ant
-
-   locate a copy of `/usr/share/ant/fetch.xml`
-   locate a copy of  `/usr/share/ant/get-m2.xml`
-   locate a copy of  `/usr/share/ant/ivy-2.4.0.jar`
-
- - Fetch dependencies:
+  - Install Apache Ant
+  - locate a copy of `/usr/share/ant/fetch.xml`
+  - locate a copy of  `/usr/share/ant/get-m2.xml`
+  - locate a copy of  `/usr/share/ant/ivy-2.4.0.jar`
+  - Fetch dependencies:
 
 ```
 export ANT_HOME=/usr/share/ant/ 
 ant -f $ANT_HOME/fetch.xml -Ddest=system
 ```
 
-### Generate GPG Key
-`gpg --gen-key`
- - (1) RSA Key
- - Choose size
+### Generate GPG Key (optional, omitted from build.xml)
+
+ - (1) RSA Key: `gpg --gen-key`
  - Enter name, email
  - Enter a passphrase (leave blank, otherwise the build process will fail)
 
