@@ -3,11 +3,6 @@
 # zerotier
 #
 ###########################################################
-
-# You must replace "zerotier" and "ZEROTIER" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
 #
 # ZEROTIER_VERSION, ZEROTIER_SITE and ZEROTIER_SOURCE define
 # the upstream location of the source code for the package.
@@ -25,9 +20,9 @@
 # from your name or email address.  If you leave MAINTAINER set to
 # "NSLU2 Linux" other developers will feel free to edit.
 #
-ZEROTIER_SITE=https://github.com/zerotier/ZeroTierOne/archive/
+ZEROTIER_URL=https://github.com/zerotier/ZeroTierOne/archive/$(ZEROTIER_VERSION).tar.gz
 ZEROTIER_VERSION=1.2.4
-ZEROTIER_SOURCE=$(ZEROTIER_VERSION).tar.gz
+ZEROTIER_SOURCE=ZeroTierOne-$(ZEROTIER_VERSION).tar.gz
 ZEROTIER_DIR=ZeroTierOne-$(ZEROTIER_VERSION)
 ZEROTIER_UNZIP=zcat
 ZEROTIER_MAINTAINER=Joseph Henry <joseph.henry@zerotier.com>
@@ -45,9 +40,7 @@ ZEROTIER_IPK_VERSION=1
 
 #
 # ZEROTIER_CONFFILES should be a list of user-editable files
-ZEROTIER_CONFFILES=
-#$(TARGET_PREFIX)/etc/zerotier/zerotier.conf $(TARGET_PREFIX)/etc/zerotier/zerotier.up \
-#$(TARGET_PREFIX)/etc/init.d/S20zerotier $(TARGET_PREFIX)/etc/xinetd.d/zerotier
+#ZEROTIER_CONFFILES=$(TARGET_PREFIX)/etc/zerotier.conf $(TARGET_PREFIX)/etc/init.d/SXXzerotier
 
 #
 # ZEROTIER_PATCHES should list any patches, in the the order in
@@ -61,7 +54,6 @@ ZEROTIER_PATCHES=
 # compilation or linking flags, then list them here.
 #
 ZEROTIER_CPPFLAGS=
-#-fno-inline
 ZEROTIER_LDFLAGS=
 
 #
@@ -83,10 +75,14 @@ ZEROTIER_IPK=$(BUILD_DIR)/zerotier_$(ZEROTIER_VERSION)-$(ZEROTIER_IPK_VERSION)_$
 #
 # This is the dependency on the source code.  If the source is missing,
 # then it will be fetched from the site using wget.
+# $(ZEROTIER_URL) holds the link to the source,
+# which is saved to $(DL_DIR)/$(ZEROTIER_SOURCE).
+# When adding new package, remember to place sha512sum of the source to
+# scripts/checksums/$(ZEROTIER_SOURCE).sha512
 #
 $(DL_DIR)/$(ZEROTIER_SOURCE):
-	$(WGET) -P $(DL_DIR) $(ZEROTIER_SITE)/$(ZEROTIER_SOURCE) || \
-	$(WGET) -P $(DL_DIR) $(SOURCES_NLO_SITE)/$(ZEROTIER_SOURCE)
+	$(WGET) -O $@ $(ZEROTIER_URL) || \
+	$(WGET) -P $(@D) $(SOURCES_NLO_SITE)/$(@F)
 
 #
 # The source code depends on it existing within the download directory.
@@ -110,33 +106,34 @@ zerotier-source: $(DL_DIR)/$(ZEROTIER_SOURCE) $(ZEROTIER_PATCHES)
 # If the compilation of the package requires other packages to be staged
 # first, then do that first (e.g. "$(MAKE) <bar>-stage <baz>-stage").
 #
+# If the package uses  GNU libtool, you should invoke $(PATCH_LIBTOOL) as
+# shown below to make various patches to it.
+#
 $(ZEROTIER_BUILD_DIR)/.configured: $(DL_DIR)/$(ZEROTIER_SOURCE) $(ZEROTIER_PATCHES) make/zerotier.mk
-#	$(MAKE) lzo-stage
-#ifneq ($(HOST_MACHINE),armv5b)
-#	$(MAKE) openssl-stage
-#endif
-#	rm -rf $(BUILD_DIR)/$(ZEROTIER_DIR) $(@D)
-#	$(ZEROTIER_UNZIP) $(DL_DIR)/$(ZEROTIER_SOURCE) | tar -C $(BUILD_DIR) -xvf -
-#	if test -n "$(ZEROTIER_PATCHES)" ; \
-#		then cat $(ZEROTIER_PATCHES) | \
-#		$(PATCH) -d $(BUILD_DIR)/$(ZEROTIER_DIR) -p0 ; \
-#	fi
-#	if test "$(BUILD_DIR)/$(ZEROTIER_DIR)" != "$(@D)" ; \
-#		then mv $(BUILD_DIR)/$(ZEROTIER_DIR) $(@D) ; \
-#	fi
-#	(cd $(@D); \
-#		$(TARGET_CONFIGURE_OPTS) \
-#		CPPFLAGS="$(STAGING_CPPFLAGS) $(ZEROTIER_CPPFLAGS)" \
-#		LDFLAGS="$(STAGING_LDFLAGS) $(ZEROTIER_LDFLAGS)" \
-#		./configure \
-#		--build=$(GNU_HOST_NAME) \
-#		--host=$(GNU_TARGET_NAME) \
-#		--target=$(GNU_TARGET_NAME) \
-#		--prefix=$(TARGET_PREFIX) \
-#		--disable-nls \
-#		--enable-password-save \
-#	)
-#	touch $@
+	#$(MAKE) <bar>-stage <baz>-stage
+	rm -rf $(BUILD_DIR)/$(ZEROTIER_DIR) $(@D)
+	$(ZEROTIER_UNZIP) $(DL_DIR)/$(ZEROTIER_SOURCE) | tar -C $(BUILD_DIR) -xvf -
+	if test -n "$(ZEROTIER_PATCHES)" ; \
+		then cat $(ZEROTIER_PATCHES) | \
+		$(PATCH) -d $(BUILD_DIR)/$(ZEROTIER_DIR) -p0 ; \
+	fi
+	if test "$(BUILD_DIR)/$(ZEROTIER_DIR)" != "$(@D)" ; \
+		then mv $(BUILD_DIR)/$(ZEROTIER_DIR) $(@D) ; \
+	fi
+	(cd $(@D); \
+		$(TARGET_CONFIGURE_OPTS) \
+		CPPFLAGS="$(STAGING_CPPFLAGS) $(ZEROTIER_CPPFLAGS)" \
+		LDFLAGS="$(STAGING_LDFLAGS) $(ZEROTIER_LDFLAGS)" \
+		#./configure \
+		#--build=$(GNU_HOST_NAME) \
+		#--host=$(GNU_TARGET_NAME) \
+		#--target=$(GNU_TARGET_NAME) \
+		#--prefix=$(TARGET_PREFIX) \
+		#--disable-nls \
+		#--disable-static \
+	)
+	#$(PATCH_LIBTOOL) $(@D)/libtool
+	touch $@
 
 zerotier-unpack: $(ZEROTIER_BUILD_DIR)/.configured
 
@@ -176,7 +173,7 @@ $(ZEROTIER_IPK_DIR)/CONTROL/control:
 	@echo "Section: $(ZEROTIER_SECTION)" >>$@
 	@echo "Version: $(ZEROTIER_VERSION)-$(ZEROTIER_IPK_VERSION)" >>$@
 	@echo "Maintainer: $(ZEROTIER_MAINTAINER)" >>$@
-	@echo "Source: $(ZEROTIER_SITE)/$(ZEROTIER_SOURCE)" >>$@
+	@echo "Source: $(ZEROTIER_URL)" >>$@
 	@echo "Description: $(ZEROTIER_DESCRIPTION)" >>$@
 	@echo "Depends: $(ZEROTIER_DEPENDS)" >>$@
 	@echo "Suggests: $(ZEROTIER_SUGGESTS)" >>$@
@@ -196,50 +193,24 @@ $(ZEROTIER_IPK_DIR)/CONTROL/control:
 #
 $(ZEROTIER_IPK): $(ZEROTIER_BUILD_DIR)/.built
 	rm -rf $(ZEROTIER_IPK_DIR) $(BUILD_DIR)/zerotier_*_$(TARGET_ARCH).ipk
-	# Install server to $(TARGET_PREFIX)/sbin
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/sbin
-	$(STRIP_COMMAND) $(ZEROTIER_BUILD_DIR)/zerotier -o $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/sbin/zerotier
-
-	# xinetd startup file
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/xinetd.d
-	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/zerotier.xinetd $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/xinetd.d/zerotier
-
-	# init.d startup file
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/init.d
-	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/S20zerotier $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/init.d
-
-	# zerotier config files
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier
-	$(INSTALL) -m 644 $(ZEROTIER_SOURCE_DIR)/zerotier.conf $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier
-	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/zerotier.up $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier
-
-	# zerotier loopback test 
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-config-files
-	$(INSTALL) -m 644 $(ZEROTIER_BUILD_DIR)/sample-config-files/* $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-config-files
-
-	# zerotier sample keys
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-keys
-	$(INSTALL) -m 644 $(ZEROTIER_BUILD_DIR)/sample-keys/* $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-keys
-
-	# zerotier sample scripts
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-scripts
-	$(INSTALL) -m 644 $(ZEROTIER_BUILD_DIR)/sample-scripts/* $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier/sample-scripts
-
-	# Install man pages
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/man/man8
-	$(INSTALL) -m 644 $(ZEROTIER_BUILD_DIR)/zerotier.8 $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/man/man8
-
-	# Create log directory
-	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/var/log/zerotier
-
-	# Install control files
-	make  $(ZEROTIER_IPK_DIR)/CONTROL/control
-#	$(INSTALL) -m 644 $(ZEROTIER_SOURCE_DIR)/postinst $(ZEROTIER_IPK_DIR)/CONTROL
-#	$(INSTALL) -m 644 $(ZEROTIER_SOURCE_DIR)/prerm $(ZEROTIER_IPK_DIR)/CONTROL
+	$(MAKE) -C $(ZEROTIER_BUILD_DIR) DESTDIR=$(ZEROTIER_IPK_DIR) install-strip
+#	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/
+#	$(INSTALL) -m 644 $(ZEROTIER_SOURCE_DIR)/zerotier.conf $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/zerotier.conf
+#	$(INSTALL) -d $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/init.d
+#	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/rc.zerotier $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/init.d/SXXzerotier
+#	sed -i -e '/^#!/aOPTWARE_TARGET=${OPTWARE_TARGET}' $(ZEROTIER_IPK_DIR)$(TARGET_PREFIX)/etc/init.d/SXXzerotier
+	$(MAKE) $(ZEROTIER_IPK_DIR)/CONTROL/control
+#	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/postinst $(ZEROTIER_IPK_DIR)/CONTROL/postinst
+#	sed -i -e '/^#!/aOPTWARE_TARGET=${OPTWARE_TARGET}' $(ZEROTIER_IPK_DIR)/CONTROL/postinst
+#	$(INSTALL) -m 755 $(ZEROTIER_SOURCE_DIR)/prerm $(ZEROTIER_IPK_DIR)/CONTROL/prerm
+#	sed -i -e '/^#!/aOPTWARE_TARGET=${OPTWARE_TARGET}' $(ZEROTIER_IPK_DIR)/CONTROL/prerm
+#	if test -n "$(UPD-ALT_PREFIX)"; then \
+		sed -i -e '/^[ 	]*update-alternatives /s|update-alternatives|$(UPD-ALT_PREFIX)/bin/&|' \
+			$(ZEROTIER_IPK_DIR)/CONTROL/postinst $(ZEROTIER_IPK_DIR)/CONTROL/prerm; \
+	fi
 	echo $(ZEROTIER_CONFFILES) | sed -e 's/ /\n/g' > $(ZEROTIER_IPK_DIR)/CONTROL/conffiles
 	cd $(BUILD_DIR); $(IPKG_BUILD) $(ZEROTIER_IPK_DIR)
 	$(WHAT_TO_DO_WITH_IPK_DIR) $(ZEROTIER_IPK_DIR)
-
 
 #
 # This is called from the top level makefile to create the IPK file.
@@ -264,4 +235,4 @@ zerotier-dirclean:
 # Some sanity check for the package.
 #
 zerotier-check: $(ZEROTIER_IPK)
-	perl scripts/optware-check-package.pl --target=$(OPTWARE_TARGET) $(ZEROTIER_IPK)
+	perl scripts/optware-check-package.pl --target=$(OPTWARE_TARGET) $^
