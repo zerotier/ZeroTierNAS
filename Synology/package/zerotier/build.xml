@@ -3,14 +3,15 @@
 
 	<property name="package" value="zerotier" />
 	<property name="version" value="1.2.4" />
-	<property name="os_min_ver" value="6.0-7321" />
-	<property name="firmware" value="6.0-7321" />
 
 	<target name="spk" description="Build SPK package">
 		<syno:spk destdir="dist" name="${package}" version="${version}" arch="noarch">
 			<info name="displayname" value="ZeroTier" />
 			<info name="description" value="Radically simplify your network with a P2P virtual networking layer that works the same everywhere." />
 
+			<info name="os_min_ver" value="6.0-7321" />
+			<info name="firmware" value="6.0-7321" />
+	
 			<info name="maintainer" value="joseph@zerotier.com" />
 			<info name="maintainer_url" value="https://zerotier.com" />
 			
