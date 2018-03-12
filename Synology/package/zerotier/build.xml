@@ -3,6 +3,8 @@
 
 	<property name="package" value="zerotier" />
 	<property name="version" value="1.2.4" />
+	<property name="os_min_ver" value="6.0-7321" />
+	<property name="firmware" value="6.0-7321" />
 
 	<target name="spk" description="Build SPK package">
 		<syno:spk destdir="dist" name="${package}" version="${version}" arch="noarch">
@@ -23,6 +25,7 @@
 
 			<package dir="app" includes="**/*.sh" filemode="755" />
 			<package dir="app" excludes="**/*.sh" />
+
 		</syno:spk>
 
 		<syno:package-source file="dist/spksrc.json">
