@@ -1,6 +1,6 @@
 #!/bin/sh
 CONF=/etc/config/qpkg.conf
-QPKG_NAME="ZeroTier"
+QPKG_NAME="zerotier"
 QPKG_ROOT=`/sbin/getcfg $QPKG_NAME Install_Path -f ${CONF}`
 APACHE_ROOT=/share/`/sbin/getcfg SHARE_DEF defWeb -d Qweb -f /etc/config/def_share.info`
 case "$1" in

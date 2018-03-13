@@ -108,6 +108,8 @@
 
 #
 PKG_MAIN_REMOVE="{
+	rm -rf /usr/sbin/zerotier-cli
+	# all identity files are stored in the Install_Path and will be removed automatically
 }"
 
 #
