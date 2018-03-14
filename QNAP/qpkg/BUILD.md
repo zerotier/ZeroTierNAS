@@ -12,9 +12,9 @@
  
  - Go to dev directory defined by: `getcfg QDK Install_Path -f /etc/config/qpkg.conf` 
 
- - Copy previously mentioned `qnap.tar` to your QNAP system and untar it in the dev directory under `ZeroTier`
+ - Copy previously mentioned `qnap.tar` to your QNAP system and untar it in the dev directory under `zerotier`
 
- - On QNAP System, enter `ZeroTier` directory and run `qbuild`
+ - On QNAP System, enter `zerotier` directory and run `qbuild`
 
  - Tar up the result and send it back to your dev system.
 
