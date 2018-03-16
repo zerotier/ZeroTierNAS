@@ -94,58 +94,65 @@
 ## Path to ipkg or opkg package tool if installed.
 #CMD_PKG_TOOL=
 #
+
 ######################################################################
 # All package specific functions shall call 'err_log MSG' if an error
 # is detected that shall terminate the installation.
 ######################################################################
-#
+
 ######################################################################
 # Define any package specific operations that shall be performed when
 # the package is removed.
 ######################################################################
+
 #PKG_PRE_REMOVE="{
 #}"
 
-#
 PKG_MAIN_REMOVE="{
 	rm -rf /usr/sbin/zerotier-cli
 	# all identity files are stored in the Install_Path and will be removed automatically
 }"
 
-#
 #PKG_POST_REMOVE="{
 #}"
-#
+
 ######################################################################
 # Define any package specific initialization that shall be performed
 # before the package is installed.
 ######################################################################
-pkg_init(){
-	modprob tun
+
+pkg_init()
+{
+	modprobe tun
 }
-#
+
+
 ######################################################################
 # Define any package specific requirement checks that shall be
 # performed before the package is installed.
 ######################################################################
-#pkg_check_requirement(){
+
+#pkg_check_requirement()
+#{
 #}
-#
+
 ######################################################################
 # Define any package specific operations that shall be performed when
 # the package is installed.
 ######################################################################
-pkg_pre_install(){
-	#log "pkg_pre_install"
-}
 
-#
-pkg_install(){
-	log "pkg_install"
-}
+#pkg_pre_install()
+#{
+#	log "pkg_pre_install"
+#}
 
-#
-pkg_post_install(){
+#pkg_install()
+#{
+#	log "pkg_install"
+#}
+
+pkg_post_install()
+{
 	log $SYS_QPKG_INSTALL_PATH
 	modprobe tun
 }
