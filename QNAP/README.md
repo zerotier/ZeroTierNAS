@@ -54,7 +54,7 @@ TS-131, TS-231 ,TS-231+, TS-431, TS-431+
 [zerotier_1.2.4-qnap-arm-x41.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-arm-x41.qpkg?pk_campaign=github_zerotiernas)
 
 ```
-TS-128, TS-131P, TS-231P
+TS-128, TS-131P, TS-231P, TS-231P2
 ```
 
 ***
