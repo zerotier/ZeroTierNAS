@@ -48,7 +48,7 @@ Available commands:
 | Intel x64  | [zerotier-1.2.4-syn-x64-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-x64-6.1.spk?pk_campaign=github_zerotiernas) |
 | Intel x86  | [zerotier-1.2.4-syn-x86-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-x86-6.1.spk?pk_campaign=github_zerotiernas) |
 | Marvell 88f6281  | [zerotier-1.2.4-syn-88f6281-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-88f6281-6.1.spk?pk_campaign=github_zerotiernas) |
-| Marvell Armada 370  | [zerotier-1.2.4-syn-armada370.-6.1spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada370-6.1.spk?pk_campaign=github_zerotiernas) |
+| Marvell Armada 370  | [zerotier-1.2.4-syn-armada370.-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada370-6.1.spk?pk_campaign=github_zerotiernas) |
 | Marvell Armada 375  | [zerotier-1.2.4-syn-armada375-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada375-6.1.spk?pk_campaign=github_zerotiernas) |
 | Marvell Armada 38x  | [zerotier-1.2.4-syn-armada38x-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armada38x-6.1.spk?pk_campaign=github_zerotiernas) |
 | Marvell Armada XP  | [zerotier-1.2.4-syn-armadaxp-6.1.spk](https://download.zerotier.com/dist/zerotier-1.2.4-syn-armadaxp-6.1.spk?pk_campaign=github_zerotiernas) |
