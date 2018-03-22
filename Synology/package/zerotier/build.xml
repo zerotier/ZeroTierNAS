@@ -2,7 +2,7 @@
 <project name="Ant SPK Task" basedir="." default="spk" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:syno="antlib:net.filebot.ant.spk">
 
 	<property name="package" value="zerotier" />
-	<property name="version" value="1.2.5-0" />
+	<property name="version" value="1.2.5r0" />
 
 	<target name="spk" description="Build SPK package">
 		<syno:spk destdir="dist" name="${package}" version="${version}" arch="noarch">
