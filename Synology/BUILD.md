@@ -342,6 +342,10 @@ If successful, copy it into the `package/zerotier/gpg` folder and then build:
   - Update text and version info in: `ZeroTierNAS/Synology/package/zerotier/build.xml`
   - Run `./../../packgen.sh`
 
+  - To change the package version, do the following:
+   - Update the `version` field in `build.xml`
+   - Update the `SRC_ZT_VERSION` and `DST_ZT_VERSION` variables in `packgen.sh`
+
 ***
 
 

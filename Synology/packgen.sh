@@ -7,7 +7,8 @@
 
 CROSSDIR='../../cross-compiled-binaries'
 DSM_VERSION='6.1'
-ZT_VERSION='1.2.4'
+SRC_ZT_VERSION='1.2.4'
+DST_ZT_VERSION='1.2.5r0'
 OUTPUT_DIR='../../finished-packages'
 
 rm -rf ${OUTPUT_DIR}
