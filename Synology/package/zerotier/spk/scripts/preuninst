@@ -8,19 +8,12 @@ echo "$(date) UNINSTALL: killing zerotier-one and watchdog" >> ${LOG_FILE} ;
 killall zerotier-one ;
 pkill -f "zerotier-watchdog" ;
 echo "$(date) UNINSTALL: removing config files but leaving identity.* files" >> ${LOG_FILE} ;
-# remove all files except for identity files (for future convenience)
+# remove all files except for identity files and network config files (for future convenience)
 find ${ZT_HOMEDIR} -type f ! -name 'identity.*' -delete
-rm -rf ${ZT_HOMEDIR}/controller.d
-rm -rf ${ZT_HOMEDIR}/iddb.d
-rm -rf ${ZT_HOMEDIR}/networks.d
-echo "$(date) UNINSTALL: removing old symlinks" >> ${LOG_FILE} ;
-rm -f ${INSTALL_DIR}
-rm -rf /usr/local/bin/zerotier-cli
-rm -rf /usr/local/bin/zerotier-idtool
+rm -rf ${INSTALL_DIR} ${ZT_HOMEDIR}/controller.d ${ZT_HOMEDIR}/iddb.d /usr/local/bin/zerotier-cli /usr/local/bin/zerotier-idtool
 # nginx de-config
 echo "$(date) UNINSTALL: removing nginx reverse proxy config" >> ${LOG_FILE} ;
 rm -f /usr/local/etc/nginx/conf.d/dsm.zerotier.conf
-# remove control scrip
 rm -f /etc/init.d/zerotier
 # TODO: check devicemap and remove all ls /etc/sysconfig/network-scripts entries
 
