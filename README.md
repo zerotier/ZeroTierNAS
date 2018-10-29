@@ -11,7 +11,7 @@ Pre-Built Binaries/Packages for other devices and platforms can be found here: [
 
  - [QNAP](QNAP/README.md)
  - [Synology](Synology/README.md)
- - [Netgear ReadyNAS](https://github.com/NAStools/zerotierone) ([1.1.4](https://github.com/NAStools/zerotierone/releases/tag/readynas%2F1.1.14-nt3), [1.2.4](https://github.com/didyouexpectthat/zerotierone/releases/tag/readynas%2F1.2.4-nt1-RC2))
+ - [Netgear ReadyNAS](https://github.com/NAStools/zerotierone) ([1.1.4 ARM](https://github.com/NAStools/zerotierone/releases/tag/readynas%2F1.1.14-nt3), [1.2.4 AMD64](https://github.com/didyouexpectthat/zerotierone/releases/tag/readynas%2F1.2.4-nt1-RC2))
  - [Western Digital](WD/README.md)
 
 
