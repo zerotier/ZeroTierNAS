@@ -1,17 +1,16 @@
 ZeroTier for Synology 
-======
+==
 
-[![irc](https://img.shields.io/badge/IRC-%23zerotier%20on%20freenode-orange.svg)](https://webchat.freenode.net/?channels=zerotier)
+**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
 
-***
-
-- Downloads: [https://download.zerotier.com/RELEASES/](https://download.zerotier.com/RELEASES/)
-
+## Picking the correct package:
 - See [here](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) or [here](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) to determine which chip architecture your device has. Or just ask and we can help you.
+
+## Known issues:
 
 - Synology QuickConnect is known to prevent the package GUI from working. We advise that you connect directly while administering your device.
 
-- If for some reason you want to build your own ZeroTier package, we've included the instructions [here](BUILD.md)
+## Usage:
 
 ```
 Usage: zerotier-cli [-switches] <command/path> [<args>]
