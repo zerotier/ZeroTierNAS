@@ -58,7 +58,7 @@ TS-x51 Series, TS-x51+ Series, TS-x51A Series, TS-x53B Series, TS-x53A Series, T
 
 ### arm-x19
 
-[ZeroTier_1.2.4-qnap-arm-x19.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-arm-x19.qpkg?pk_campaign=github_zerotiernas)
+[ZeroTier_1.2.4-qnap-arm-x19.qpkg](https://raw.githubusercontent.com/zerotier/download.zerotier.com/master/htdocs/RELEASES/1.2.4/dist/zerotier_1.2.4-qnap-arm-x19.qpkg)
 
 ```
 TS-119P II, TS-119P+, TS-119, TS-219P, TS-219, TS-219P II, TS-219P+, TS-221, TS-419U II, TS-419P, TS-419U II, TS-439U-RP/SP TS-419P II, TS-419P+, TS-419U+, TS-419U, SS-439-Pro
