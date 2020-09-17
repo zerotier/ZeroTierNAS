@@ -1,7 +1,7 @@
-ZeroTier for Synology 
+ZeroTier packages for Synology 
 ==
 
-**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
+**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml)
 
 ## Picking the correct package:
 - See [here](https://github.com/SynoCommunity/spksrc/wiki/Architecture-per-Synology-model) or [here](https://www.synology.com/en-us/knowledgebase/DSM/tutorial/General/What_kind_of_CPU_does_my_NAS_have) to determine which chip architecture your device has. Or just ask and we can help you.

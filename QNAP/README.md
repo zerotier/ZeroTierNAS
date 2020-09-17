@@ -1,7 +1,7 @@
-ZeroTier for QNAP 
+ZeroTier packages for QNAP 
 ==
 
-**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml?pk_campaign=github_ZeroTierNAS)
+**Download pre-built packages here:** [zerotier.com/download.shtml](https://zerotier.com/download.shtml)
 
 ## Usage:
 
