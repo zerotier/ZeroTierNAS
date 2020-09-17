@@ -1,0 +1,15 @@
+
+<p><em>ZeroTier allows you to access your Asustor device from anywhere in the world without the need for port forwarding or cloud services. ZeroTier establishes a direct and encrypted connection to your device even when you aren't on your LAN. Some initial setup is required and is detailed below:</em></p>
+<p>ZeroTier does not yet provide a GUI for Asustor devices. To use the CLI:</p>
+<p><strong>1) Using your (admin) account, enable SSH:</strong></p>
+<p>&nbsp;- Services -&gt; Terminal -&gt; Enable SSH (set to port 22)</p>
+<p><strong>2) From a computer, open a terminal and SSH into your Asustor device:</strong></p>
+<p>&nbsp;- ssh admin@your_asustor_device_ip</p>
+<p><strong>3) Join a network</strong></p>
+<p>&nbsp;- zerotier-cli join your_network_id</p>
+<p><strong>4) Go to my.zerotier.com and authorize your Asustor device to join your network.</strong></p>
+<p><strong>5) Done!</strong></p>
+<p>If you do not yet have a network ID, go to my.zerotier.com, create an account and then create a new network and use its ID in the previous command.</p>
+<p>If you have any questions please conect: <a href="mailto:support@zerotier.com">support@zerotier.com</a></p>
+
+

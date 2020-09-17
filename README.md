@@ -1,3 +1,14 @@
 ## Packages for Network Attached Storage (NAS) and Personal Cloud Devices
 
-Pre-built binaries and packages can be found here: [zerotier.com/download.shtml](https://zerotier.com/download.shtml)
+Pre-built packages here: [https://zerotier.com/download.shtml](https://zerotier.com/download.shtml)
+
+
+| Manufacturer                | Supported?    | Interface            | Notes |
+| --------------------------- |:-------------:| --------------------:| ----: |
+| [Synology](synology)        | yes           | CLI, GUI deprecated  ||
+| [QNAP](qnap)                | partially     | CLI                  ||
+| [ASUStor](asustor)          | yes           | CLI                  ||
+| [Western Digital](wd)       | yes           | CLI                  ||
+| [FreeNAS](freenas)          | partially     | CLI                  ||
+| [Netgear ReadyNAS](netgear) | partially     | CLI                  ||
+| [Drobo](drobo)              | not yet       | CLI                  ||

@@ -1,1 +1,0 @@
-Radically simplify your network with a virtual networking layer that works the same everywhere.
