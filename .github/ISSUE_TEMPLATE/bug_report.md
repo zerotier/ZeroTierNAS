@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: ShortProblemDescription (Manufacturer, Model, DSM/QTS/ADM Version or similar)
 labels: bug
 assignees: joseph-henry
 
