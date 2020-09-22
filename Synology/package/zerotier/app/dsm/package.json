@@ -1,0 +1,12 @@
+{
+   "scripts": {
+      "build": "babel ./ZeroTierNetwork.jsx --out-file ./build/ZeroTierNetwork.js --presets=@babel/preset-env,@babel/preset-react && babel ./ZeroTierNode.jsx --out-file ./build/ZeroTierNode.js --presets=@babel/preset-env,@babel/preset-react"
+   },
+   "dependencies": {},
+   "devDependencies": {
+      "@babel/cli": "^7.11.6",
+      "@babel/core": "^7.11.6",
+      "@babel/preset-env": "^7.11.5",
+      "@babel/preset-react": "^7.10.4"
+   }
+}
