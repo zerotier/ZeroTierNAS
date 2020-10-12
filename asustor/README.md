@@ -1,15 +1,15 @@
-ZeroTier APKs for ASUStor 
+ZeroTier APKs for ASUSTOR 
 ==
 
 ## Picking the correct package:
 
 Our package is bundled with a set of static binaries compatible with `x86-64`, `i386`, and `aarch64` chipsets. So it's likely to be compatible with most models. If this is not the case for you please open a ticket and indicate your model and `ADM` version. Note: There is no GUI as of yet.
 
- - *Pre-built ASUStor APKs: [https://download.zerotier.com/dist/asustor/](https://download.zerotier.com/dist/asustor/)*
+ - *Pre-built ASUSTOR APKs: [https://download.zerotier.com/dist/asustor/](https://download.zerotier.com/dist/asustor/)*
 
  - *Download other packages here:* [https://zerotier.com/download.shtml](https://zerotier.com/download.shtml)
 
-## Troubleshooting steps specific to ASUStor
+## Troubleshooting steps specific to ASUSTOR
 
 - Make sure you're using the `zerotier-cli` as root.
 - If ZeroTier doesn't work immediately after install try restarting at least once.
@@ -44,7 +44,7 @@ Available commands:
 
 For those of you who do not trust pre-built packages or found this repo in the year 2077, here are rough instructions for how to build the APK yourself. These instructions were last tested on Ubuntu Server with python 2.7 installed.
 
-1) Cross-compile ZeroTier using ASUStor's own toolchain (available here: [developer.asustor.com](developer.asustor.com)) or by statically linking against a compatible standard library. For reference, we build and distribute the raw statically-linked artifacts here: [download.zerotier.com/dist/static-binaries/](https://download.zerotier.com/dist/static-binaries/)
+1) Cross-compile ZeroTier using ASUSTOR's own toolchain (available here: [developer.asustor.com](developer.asustor.com)) or by statically linking against a compatible standard library. For reference, we build and distribute the raw statically-linked artifacts here: [download.zerotier.com/dist/static-binaries/](https://download.zerotier.com/dist/static-binaries/)
 2) Place the resultant binaries in the `zerotier/bin` package directory and name them according to their target architecture (our `zerotier/CONTROL/post-install.sh` script will look for these specific names during install and use the correct one automatically.):
 
 ```

@@ -7,7 +7,7 @@ Pre-built packages here: [https://zerotier.com/download.shtml](https://zerotier.
 | --------------------------- |:-------------:| --------------------:| ----: |
 | [Synology](synology)        | yes           | CLI, GUI deprecated  ||
 | [QNAP](qnap)                | partially     | CLI                  ||
-| [ASUStor](asustor)          | yes           | CLI                  ||
+| [ASUSTOR](asustor)          | yes           | CLI                  ||
 | [Western Digital](wd)       | yes           | CLI                  ||
 | [FreeNAS](freenas)          | partially     | CLI                  ||
 | [Netgear ReadyNAS](netgear) | partially     | CLI                  ||
