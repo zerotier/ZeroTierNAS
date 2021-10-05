@@ -5,10 +5,10 @@ Pre-built packages here: [https://zerotier.com/download.shtml](https://zerotier.
 
 | Manufacturer                | Supported?    | Interface            | Notes |
 | --------------------------- |:-------------:| --------------------:| ----: |
-| [Synology](synology)        | yes           | CLI, GUI deprecated  ||
-| [QNAP](qnap)                | partially     | CLI                  ||
+| [Synology](Synology)        | yes           | CLI, GUI deprecated  ||
+| [QNAP](QNAP)                | partially     | CLI                  ||
 | [ASUSTOR](asustor)          | yes           | CLI                  ||
-| [Western Digital](wd)       | yes           | CLI                  ||
-| [FreeNAS](freenas)          | partially     | CLI                  ||
+| [Western Digital](WD)       | yes           | CLI                  ||
+| [FreeNAS](FreeNAS)          | partially     | CLI                  ||
 | [Netgear ReadyNAS](netgear) | partially     | CLI                  ||
-| [Drobo](drobo)              | not yet       | CLI                  ||
+| [Drobo](Drobo)              | not yet       | CLI                  ||
