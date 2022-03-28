@@ -13,7 +13,7 @@ Our package is bundled with a set of static binaries compatible with `x86-64`, `
 
 - Make sure you're using the `zerotier-cli` as root.
 - If ZeroTier doesn't work immediately after install try restarting at least once.
-- If ZeroTier *still* doesn't work. Try `mobprobe tun` and check with `ls /dev/tun`
+- If ZeroTier *still* doesn't work. Try `modprobe tun` and check with `ls /dev/tun`
 - Check that ZeroTier is running: `ps`
 ## Usage:
 
