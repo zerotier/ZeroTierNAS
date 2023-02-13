@@ -36,7 +36,7 @@ Available commands:
 
 ### x86
 
-[ZeroTier_1.2.4-qnap-x86.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-x86.qpkg?pk_campaign=github_zerotiernas)
+[ZeroTier_1.10.1_x86.qpkg](https://download.zerotier.com/dist/qnap/zerotier_1.10.1_x86.qpkg?pk_campaign=github_zerotiernas)
 
 ```
 TS-x51 Series, TS-x51+ Series, TS-x51A Series, TS-x53B Series, TS-x53A Series, TS-x53U Series TS-239 Pro, TS-239 Pro II, TS-239 Pro II+, TS-251, TS-253A, TS-259 Pro, TS-259 Pro+, TS-269L, TS-439 Pro II, TS-451, TS-459 Pro, TS-439 Pro, TS-459U-RP+/SP+, TS-439 Pro II+, TS-459 Pro II, TS-459 Pro+, TS-459U-RP/SP, SS-439-Pro TS-469L, TS-651, TS-851
@@ -46,7 +46,7 @@ TS-x51 Series, TS-x51+ Series, TS-x51A Series, TS-x53B Series, TS-x53A Series, T
 
 ### x86_64
 
-[ZeroTier_1.2.4-qnap-x86_64.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-x86_64.qpkg?pk_campaign=github_zerotiernas)
+[ZeroTier_1.10.1_x86_64.qpkg](https://download.zerotier.com/dist/qnap/zerotier_1.10.1_x86_64.qpkg?pk_campaign=github_zerotiernas)
 
 ***
 
@@ -58,7 +58,7 @@ TS-x51 Series, TS-x51+ Series, TS-x51A Series, TS-x53B Series, TS-x53A Series, T
 
 ### arm-x19
 
-[ZeroTier_1.2.4-qnap-arm-x19.qpkg](https://raw.githubusercontent.com/zerotier/download.zerotier.com/master/htdocs/RELEASES/1.2.4/dist/zerotier_1.2.4-qnap-arm-x19.qpkg)
+ZeroTier_1.10.1_arm-x19.qpkg (no longer available)
 
 ```
 TS-119P II, TS-119P+, TS-119, TS-219P, TS-219, TS-219P II, TS-219P+, TS-221, TS-419U II, TS-419P, TS-419U II, TS-439U-RP/SP TS-419P II, TS-419P+, TS-419U+, TS-419U, SS-439-Pro
@@ -68,7 +68,7 @@ TS-119P II, TS-119P+, TS-119, TS-219P, TS-219, TS-219P II, TS-219P+, TS-221, TS-
 
 ### arm-x31
 
-[ZeroTier_1.2.4-qnap-arm-x31.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-arm-x31.qpkg?pk_campaign=github_zerotiernas)
+[ZeroTier_1.10.1_arm-x31.qpkg](https://download.zerotier.com/dist/qnap/zerotier_1.10.1_arm-x31.qpkg?pk_campaign=github_zerotiernas)
 
 ```
 TS-131, TS-231 ,TS-231+, TS-431, TS-431+
@@ -78,7 +78,7 @@ TS-131, TS-231 ,TS-231+, TS-431, TS-431+
 
 ### arm-x41
 
-[zerotier_1.2.4-qnap-arm-x41.qpkg](https://download.zerotier.com/dist/zerotier_1.2.4-qnap-arm-x41.qpkg?pk_campaign=github_zerotiernas)
+[zerotier_1.10.1_arm-x41.qpkg](https://download.zerotier.com/dist/qnap/zerotier_1.10.1_arm-x41.qpkg?pk_campaign=github_zerotiernas)
 
 ```
 TS-128, TS-131P, TS-231P, TS-231P2
